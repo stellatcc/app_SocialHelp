@@ -1,0 +1,194 @@
+import { useCallback, useState } from 'react';
+import { StyleSheet, Text, View, TextInput, Image, Modal, SafeAreaView, TouchableOpacity } from 'react-native';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+import { Ionicons } from '@expo/vector-icons';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+SplashScreen.preventAutoHideAsync();
+
+function Tela1({ navigation }) {
+  return (
+    <>
+      <Text style={styles.text}>Login</Text>
+      <View style={styles.boxRed}>
+        <Text style={styles.usuario}>Usuario:</Text>
+        <TextInput style={styles.InputUsuario}></TextInput>
+        <Text style={styles.senha}>Senha:</Text>
+        <TextInput style={styles.InputSenha}></TextInput>
+        <TouchableOpacity style={styles.botaoLogin}
+          onPress={() => { navigation.navigate("Tela2"); }}
+        >
+          <Text style={styles.textLogin}>Cadastrado!</Text>
+        </TouchableOpacity>
+      </View>
+
+    </>
+  )
+}
+
+function Tela2() {
+  return (
+    <>
+      <View style={styles.container} >
+        <Modal style={styles.identificar} onLayout={onLayoutRootView}>
+          <Text style={styles.textIdentificar}>Quem é você?</Text>
+        </Modal>
+      </View>
+
+    </>
+  )
+}
+
+const Stack = createNativeStackNavigator();
+
+export default function App({ navigation }) {
+ /* const [fontsLoaded] = useFonts({
+    'Fredoka-One': require('./assets/fonts/FredokaOne-Regular.ttf'),
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
+  onLayoutRootView();*/
+
+  SplashScreen.hideAsync();
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Tela">
+        <Stack.Screen name="Tela" component={Tela1} />
+        <Stack.Screen name="Tela2" component={Tela2} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FFFFE0',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  text: {
+    color: '#000',
+    fontStyle: 'normal',
+    fontFamily: 'normal',
+    fontWeight: 400,
+    fontSize: 40,
+    lineHeight: 48,
+    position: 'absolute',
+    width: 227,
+    height: 49,
+    left: 27,
+    top: 31
+  },
+
+  boxRed: {
+    position: 'absolute',
+    width: 414,
+    height: 772,
+    left: 0,
+    top: 100,
+    backgroundColor: '#DC2F02',
+    borderRadius: 29
+  },
+  usuario: {
+    position: 'absolute',
+    width: 221,
+    height: 36,
+    left: 61,
+    top: 100,
+    fontFamily: 'normal',
+    fontStyle: 'normal',
+    fontWeight: 400,
+    fontSize: 32,
+    lineHeight: 39,
+    color: '#000000',
+  },
+  InputUsuario: {
+    position: 'absolute',
+    width: 267,
+    height: 37,
+    left: 61,
+    top: 150,
+    backgroundColor: '#FFFFE0',
+    borderRadius: 20,
+  },
+  senha: {
+    position: 'absolute',
+    width: 221,
+    height: 36,
+    left: 61,
+    top: 200,
+    fontFamily: 'normal',
+    fontStyle: 'normal',
+    fontWeight: 400,
+    fontSize: 32,
+    lineHeight: 39,
+    color: '#000000',
+  },
+  InputSenha: {
+    position: 'absolute',
+    width: 267,
+    height: 37,
+    left: 61,
+    top: 260,
+    backgroundColor: '#FFFFE0',
+    borderRadius: 20,
+  },
+  botaoLogin: {
+    position: 'absolute',
+    width: 295,
+    height: 77,
+    left: 46,
+    top: 400,
+    backgroundColor: '#FFFFE0',
+    borderRadius: 20,
+  },
+  textLogin: {
+    position: 'absolute',
+    width: 235,
+    height: 49,
+    left: 35,
+    top: 10,
+    fontFamily: 'normal',
+    fontStyle: 'normal',
+    fontWeight: 400,
+    fontSize: 40,
+    lineHeight: 50,
+    color: '#000000',
+  },
+  identificar:{
+    position: 'relative',
+    width: 390,
+    height: 844,
+    background: '#6A040F',
+
+  },
+  textIdentificar: {
+    position: 'absolute',
+    width: 305,
+    height: 51,
+    left: 65,
+    top: 312,
+    fontFamily: 'normal',
+    fontStyle: 'normal',
+    fontWeight: 400,
+    fontSize: 40,
+    lineHeight: 48,
+    color: '#FFFFFF',
+
+  }
+});
