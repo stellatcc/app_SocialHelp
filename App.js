@@ -5,6 +5,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {Tela3} from './src/ongs/App.js';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -20,7 +21,7 @@ function Tela1({ navigation }) {
         <TouchableOpacity style={styles.botaoLogin}
           onPress={() => { navigation.navigate("Tela2"); }}
         >
-          <Text style={styles.textLogin}>Cadastrado!</Text>
+          <Text style={styles.textLogin}>Entre!</Text>
         </TouchableOpacity>
       </View>
 
@@ -28,13 +29,27 @@ function Tela1({ navigation }) {
   )
 }
 
-function Tela2() {
+function Tela2({ navigation }) {
   return (
     <>
       <View style={styles.container} >
-        <Modal style={styles.identificar} onLayout={onLayoutRootView}>
+        <View style={styles.identificar}>
           <Text style={styles.textIdentificar}>Quem é você?</Text>
-        </Modal>
+          <View style={{ position: 'absolute', width: 500, height: 120, top: 380, paddingLeft: 110, paddingTop:10,  flexDirection: 'row'}}>
+          <TouchableOpacity onPress={() => {navigation.navigate("Tela3");}}>
+            <Image style={{ width: 75, height: 75}} source={require('./assets/img1.png')}/>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {navigation.navigate("TelaVoluntario");}}>
+            <Image style={{ width: 75, height: 75}} source={require('./assets/img2.png')}/>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {navigation.navigate("TelaNecessitado");}}>
+            <Image style={{ width: 75, height: 75}} source={require('./assets/img3.png')}/>
+          </TouchableOpacity>
+          </View>
+          
+
+          
+        </View>
       </View>
 
     </>
@@ -44,21 +59,21 @@ function Tela2() {
 const Stack = createNativeStackNavigator();
 
 export default function App({ navigation }) {
- /* const [fontsLoaded] = useFonts({
-    'Fredoka-One': require('./assets/fonts/FredokaOne-Regular.ttf'),
-  });
-
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded]);
-
-  if (!fontsLoaded) {
-    return null;
-  }
-
-  onLayoutRootView();*/
+  /* const [fontsLoaded] = useFonts({
+     'Fredoka-One': require('./assets/fonts/FredokaOne-Regular.ttf'),
+   });
+ 
+   const onLayoutRootView = useCallback(async () => {
+     if (fontsLoaded) {
+       await SplashScreen.hideAsync();
+     }
+   }, [fontsLoaded]);
+ 
+   if (!fontsLoaded) {
+     return null;
+   }
+ 
+   onLayoutRootView();*/
 
   SplashScreen.hideAsync();
 
@@ -67,6 +82,7 @@ export default function App({ navigation }) {
       <Stack.Navigator initialRouteName="Tela">
         <Stack.Screen name="Tela" component={Tela1} />
         <Stack.Screen name="Tela2" component={Tela2} />
+        <Stack.Screen name="Tela3" component={Tela3} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -97,7 +113,7 @@ const styles = StyleSheet.create({
 
   boxRed: {
     position: 'absolute',
-    width: 414,
+    width: 455,
     height: 772,
     left: 0,
     top: 100,
@@ -159,9 +175,10 @@ const styles = StyleSheet.create({
   },
   textLogin: {
     position: 'absolute',
+    textAlign:'center',
     width: 235,
     height: 49,
-    left: 35,
+    left: 25,
     top: 10,
     fontFamily: 'normal',
     fontStyle: 'normal',
@@ -170,18 +187,18 @@ const styles = StyleSheet.create({
     lineHeight: 50,
     color: '#000000',
   },
-  identificar:{
+  identificar: {
     position: 'relative',
-    width: 390,
-    height: 844,
-    background: '#6A040F',
+    width: 450,
+    height: 850,
+    backgroundColor: '#6A040F',
 
   },
   textIdentificar: {
     position: 'absolute',
-    width: 305,
+    width: 350,
     height: 51,
-    left: 65,
+    left: 90,
     top: 312,
     fontFamily: 'normal',
     fontStyle: 'normal',
@@ -189,6 +206,6 @@ const styles = StyleSheet.create({
     fontSize: 40,
     lineHeight: 48,
     color: '#FFFFFF',
-
   }
+
 });
