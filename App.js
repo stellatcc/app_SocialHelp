@@ -5,10 +5,17 @@ import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+<<<<<<< HEAD
 {/*importar telas */ }
 import { TelaOng } from '@telasOngs/telaOng/ongs.js';
 import { TelaOng2 } from '@telasOngs/telaOng2/ongs.js';
 import { TelaOng3 } from '@telasOngs/telaOng3/ongs.js';
+=======
+{/*importar telas */}
+import {TelaOng} from './src/ongs/App.js';
+import { TelaOng2 } from './src/ongs/App.js';
+import { TelaOng3 } from './src/ongs/App.js';
+>>>>>>> 3237f20 (vaersão 2.0)
 
 SplashScreen.preventAutoHideAsync();
 
@@ -42,6 +49,7 @@ function Tela2({ navigation }) {
       <View style={styles.container} >
         <View style={styles.identificar}>
           <Text style={styles.textIdentificar}>Quem é você?</Text>
+<<<<<<< HEAD
           <View style={{ position: 'absolute', width: 500, height: 120, top: 380, paddingLeft: 110, paddingTop: 10, flexDirection: 'row' }}>
             <TouchableOpacity onPress={() => { navigation.navigate("TelaOng"); }}>
               <Image style={{ width: 75, height: 75, right:20}} source={require('@assets/img1.png')} />
@@ -55,6 +63,18 @@ function Tela2({ navigation }) {
               <Image style={{ width: 75, height: 75, left:20 }} source={require('@assets/img3.png')} />
               <Text style={styles.textButton3}>Necessitado</Text>
             </TouchableOpacity>
+=======
+          <View style={{ position: 'absolute', width: 500, height: 120, top: 380, paddingLeft: 110, paddingTop:10,  flexDirection: 'row'}}>
+          <TouchableOpacity onPress={() => {navigation.navigate("TelaOng");}}>
+            <Image style={{ width: 75, height: 75}} source={require('./assets/img1.png')}/>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {navigation.navigate("TelaVoluntario");}}>
+            <Image style={{ width: 75, height: 75}} source={require('./assets/img2.png')}/>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {navigation.navigate("TelaNecessitado");}}>
+            <Image style={{ width: 75, height: 75}} source={require('./assets/img3.png')}/>
+          </TouchableOpacity>
+>>>>>>> 3237f20 (vaersão 2.0)
           </View>
 
 
@@ -87,7 +107,11 @@ export default function App({ navigation }) {
 
   SplashScreen.hideAsync();
 
+<<<<<<< HEAD
   {/*funções para criar as telas*/ }
+=======
+  {/*funções para criar as telas*/}
+>>>>>>> 3237f20 (vaersão 2.0)
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerTitle: ''}} initialRouteName="Tela">
