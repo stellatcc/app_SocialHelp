@@ -53,7 +53,6 @@ export function TelaOng({ navigation }) {
 
 
 
-
 const styles = StyleSheet.create({
     text: {
         position: 'absolute',
