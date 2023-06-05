@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "paths": {
+            "@telasNecessitados": ["src/necessitados/*"],
+            "@telasVoluntarios": ["src/voluntarios/*"],
+            "@telasOngs": ["src/ongs/*"],
+            "@assets": ["assets/*"],
+            "@fonts": ["assets/fonts/*"]
+        }
+    }
+}

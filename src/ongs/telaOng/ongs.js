@@ -1,25 +1,26 @@
-import { useCallback, useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Modal, SafeAreaView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image, Modal, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Link, animateScroll as scroll } from "react-scroll";
+
+
 
 
 SplashScreen.preventAutoHideAsync();
 
-const data = [
-    { cor: 'branco' },
-    { cor: 'branco' },
-  ];
 
 
-export function Tela3({ navigation }) {
+export function TelaOng({ navigation }) {
     return (
-        <>
-            <Text style={styles.text}>Cadastro Ong's</Text>
-            <View style={styles.boxYellow}>
+        <>  
+            <View style={{ flexDirection: 'row', height: 0}}>
+                <Text style={styles.text}>Cadastro Ong's</Text>
+                <Image style={{width:150, height:150, left:270, bottom:20}}source={require("@assets/img11.png")}></Image>
+            </View>
+            <ScrollView contentContainerStyle={styles.boxYellow}>
                 <Text style={styles.nome}>Nome:</Text>
                 <TextInput style={styles.InputNome}></TextInput>
                 <Text style={styles.nomeOng}>Nome da ONG:</Text>
@@ -29,14 +30,14 @@ export function Tela3({ navigation }) {
                 <Text style={styles.numero}>Número de contato:</Text>
                 <TextInput style={styles.InputContato}></TextInput>
                 <Text style={styles.ajuda}>Forma de Ajuda:</Text>
-                <View style={{position: 'absolute', left: 20, bottom: 250, flexDirection:'row', width:500, height: 100}}>
-                <View style={{flexDirection:'row'}}>
-                        <TouchableOpacity style={styles.branco} onPress={()=>{trocaEstilo()}}></TouchableOpacity>
-                    <Image></Image>
+                <View style={{ position: 'absolute', left: 20, bottom: 220, flexDirection: 'row', width: 500, height: 100 }}>
+                    <View style={{ flexDirection: 'row' }}>
+                        <TouchableOpacity style={styles.branco} onPress={() => { trocaEstilo() }}></TouchableOpacity>
+                        <Image></Image>
                     </View>
-                    <View style={{flexDirection:'row', left:100}}>
-                        <TouchableOpacity style={styles.branco} onPress={()=>{trocaEstilo()}}></TouchableOpacity>
-                    <Image></Image>
+                    <View style={{ flexDirection: 'row', left: 100 }}>
+                        <TouchableOpacity style={styles.branco} onPress={() => { trocaEstilo() }}></TouchableOpacity>
+                        <Image></Image>
                     </View>
                 </View>
                 <TouchableOpacity style={styles.botaoCadastro}
@@ -44,11 +45,14 @@ export function Tela3({ navigation }) {
                 >
                     <Text style={styles.textCadastro}>Cadastre-se!</Text>
                 </TouchableOpacity>
-            </View>
-
+            </ScrollView>
         </>
+
     )
 }
+
+
+
 
 const styles = StyleSheet.create({
     text: {
@@ -56,18 +60,19 @@ const styles = StyleSheet.create({
         width: 322,
         height: 49,
         left: 19,
-        top: 10,
+        top: 20,
         fontStyle: 'normal',
         fontWeight: 400,
         fontSize: 40,
         lineHeight: 48
     },
+    
     boxYellow: {
         position: 'absolute',
-        width: 420,
+        width: 415,
         height: 772,
         left: 0,
-        top: 60,
+        top: 85,
         backgroundColor: '#F48C06',
         borderRadius: 29
     },
@@ -109,7 +114,7 @@ const styles = StyleSheet.create({
         width: 295,
         height: 37,
         left: 46,
-        top: 130,
+        top: 140,
         backgroundColor: '#FFFFE0',
         borderRadius: 20
     },
@@ -118,7 +123,7 @@ const styles = StyleSheet.create({
         width: 244.18,
         height: 36,
         left: 46,
-        top: 170,
+        top: 190,
         fontStyle: 'normal',
         fontWeight: 400,
         fontSize: 32,
@@ -130,7 +135,7 @@ const styles = StyleSheet.create({
         width: 295,
         height: 37,
         left: 46,
-        top: 210,
+        top: 235,
         backgroundColor: '#FFFFE0',
         borderRadius: 20
     },
@@ -139,7 +144,7 @@ const styles = StyleSheet.create({
         width: 295,
         height: 36,
         left: 46,
-        top: 260,
+        top: 280,
         fontStyle: 'normal',
         fontWeight: 400,
         fontSize: 32,
@@ -151,7 +156,7 @@ const styles = StyleSheet.create({
         width: 295,
         height: 37,
         left: 46,
-        top: 300,
+        top: 330,
         backgroundColor: '#FFFFE0',
         borderRadius: 20
     },
@@ -160,36 +165,50 @@ const styles = StyleSheet.create({
         width: 295,
         height: 36,
         left: 46,
-        top: 340,
+        top: 380,
         fontStyle: 'normal',
         fontWeight: 400,
         fontSize: 32,
         lineHeight: 39,
         color: '#FFFFFF'
     },
+
     preto: {
         backgroundColor: 'black',
-        width:40, 
-        height: 40,
-        borderRadius:60
+        width: 20,
+        height: 20,
+        borderRadius: 60
     },
+
     branco: {
         backgroundColor: 'white',
-        width:40, 
-        height: 40,
-        borderRadius:60
-    }
+        width: 20,
+        height: 20,
+        borderRadius: 60
+    },
 
+    botaoCadastro: {
+        position: 'absolute',
+        width: 295,
+        height: 77,
+        left: 46,
+        top: 520,
+        backgroundColor: '#FFFFE0',
+        borderRadius: 20,
+    },
 
+    textCadastro: {
+        position: 'absolute',
+        width: 235,
+        height: 49,
+        left: 30,
+        top: 10,
+        fontStyle: 'normal',
+        fontWeight: 400,
+        fontSize: 40,
+        lineHeight: 48
+    },
 
-
-
-
-
-
-
-
-
-
+    
 
 })
