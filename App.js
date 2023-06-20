@@ -1,18 +1,26 @@
-import { useCallback, useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Modal, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {Tela3} from './src/ongs/App.js';
+
+
+{/*importar telas */ }
+import { TelaOng } from '@telasOngs/telaOng/ongs.js';
+import { TelaOng2 } from '@telasOngs/telaOng2/ongs.js';
+import { TelaOng3 } from '@telasOngs/telaOng3/ongs.js';
 
 SplashScreen.preventAutoHideAsync();
 
+{/*Tela de login (Text:cria texto, View:cria as telas ou caixinhas que podem ter texto ou imagem,
+TextInput:cria uma caixinha de texto, TouchbleOpacity:cria um botão, onPress:deixa o botão clicavél,
+style:cria um estilo para cada coisa ex:um estilo de texto, com esse estilo vc muda o nome, tamanho, cor etc)*/}
 function Tela1({ navigation }) {
   return (
     <>
-      <Text style={styles.text}>Login</Text>
+      <Text style={styles.text}>Bem vindo!</Text>
+      <Image style={{ width: 150, height: 150, left:250, bottom: 15}} source={require('@assets/img9.png')} />
       <View style={styles.boxRed}>
         <Text style={styles.usuario}>Usuario:</Text>
         <TextInput style={styles.InputUsuario}></TextInput>
@@ -35,20 +43,20 @@ function Tela2({ navigation }) {
       <View style={styles.container} >
         <View style={styles.identificar}>
           <Text style={styles.textIdentificar}>Quem é você?</Text>
-          <View style={{ position: 'absolute', width: 500, height: 120, top: 380, paddingLeft: 110, paddingTop:10,  flexDirection: 'row'}}>
-          <TouchableOpacity onPress={() => {navigation.navigate("Tela3");}}>
-            <Image style={{ width: 75, height: 75}} source={require('./assets/img1.png')}/>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {navigation.navigate("TelaVoluntario");}}>
-            <Image style={{ width: 75, height: 75}} source={require('./assets/img2.png')}/>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {navigation.navigate("TelaNecessitado");}}>
-            <Image style={{ width: 75, height: 75}} source={require('./assets/img3.png')}/>
-          </TouchableOpacity>
+          <View style={{ position: 'absolute', width: 500, height: 120, top: 380, paddingLeft: 110, paddingTop: 10, flexDirection: 'row' }}>
+            <TouchableOpacity onPress={() => { navigation.navigate("TelaOng"); }}>
+              <Image style={{ width: 75, height: 75, right:20}} source={require('@assets/img1.png')} />
+              <Text style={styles.textButton1}>Ong</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => { navigation.navigate("TelaVoluntario"); }}>
+              <Image style={{ width: 75, height: 75 }} source={require('@assets/img2.png')} />
+              <Text style={styles.textButton2}>Voluntário</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => { navigation.navigate("TelaNecessitado"); }}>
+              <Image style={{ width: 75, height: 75, left:20 }} source={require('@assets/img3.png')} />
+              <Text style={styles.textButton3}>Necessitado</Text>
+            </TouchableOpacity>
           </View>
-          
-
-          
         </View>
       </View>
 
@@ -77,19 +85,23 @@ export default function App({ navigation }) {
 
   SplashScreen.hideAsync();
 
+  {/*funções para criar as telas*/ }
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Tela">
+      <Stack.Navigator screenOptions={{headerTitle: ''}} initialRouteName="Tela">
         <Stack.Screen name="Tela" component={Tela1} />
         <Stack.Screen name="Tela2" component={Tela2} />
-        <Stack.Screen name="Tela3" component={Tela3} />
+        <Stack.Screen name="TelaOng" component={TelaOng} />
+        <Stack.Screen name="TelaOng2" component={TelaOng2} />
+        <Stack.Screen name="TelaOng3" component={TelaOng3} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
 
-
+{/*CSS(estilização das telas e dos componentes das telas
+mudar cor,formato, tipo de letra etc) */}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -98,7 +110,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
-    color: '#000',
+    color:'#000',
     fontStyle: 'normal',
     fontFamily: 'normal',
     fontWeight: 400,
@@ -113,7 +125,7 @@ const styles = StyleSheet.create({
 
   boxRed: {
     position: 'absolute',
-    width: 455,
+    width: 415,
     height: 772,
     left: 0,
     top: 100,
@@ -175,7 +187,7 @@ const styles = StyleSheet.create({
   },
   textLogin: {
     position: 'absolute',
-    textAlign:'center',
+    textAlign: 'center',
     width: 235,
     height: 49,
     left: 25,
@@ -206,6 +218,19 @@ const styles = StyleSheet.create({
     fontSize: 40,
     lineHeight: 48,
     color: '#FFFFFF',
+  },
+
+  textButton1:{
+    color:'#FFFFFF'
+  },
+
+  textButton2:{
+    color:'#FFFFFF'
+  },
+
+  textButton3:{
+    color:'#FFFFFF',
+    left:20
   }
 
 });
