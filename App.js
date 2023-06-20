@@ -5,11 +5,11 @@ import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-
 {/*importar telas */ }
 import { TelaOng } from '@telasOngs/telaOng/ongs.js';
 import { TelaOng2 } from '@telasOngs/telaOng2/ongs.js';
 import { TelaOng3 } from '@telasOngs/telaOng3/ongs.js';
+
 
 SplashScreen.preventAutoHideAsync();
 
@@ -56,10 +56,9 @@ function Tela2({ navigation }) {
               <Image style={{ width: 75, height: 75, left:20 }} source={require('@assets/img3.png')} />
               <Text style={styles.textButton3}>Necessitado</Text>
             </TouchableOpacity>
-          </View>
         </View>
       </View>
-
+    </View>
     </>
   )
 }

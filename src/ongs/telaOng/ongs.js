@@ -47,7 +47,6 @@ export function TelaOng({ navigation }) {
                 </TouchableOpacity>
             </ScrollView>
         </>
-
     )
 }
 
@@ -185,7 +184,6 @@ const styles = StyleSheet.create({
         height: 20,
         borderRadius: 60
     },
-
     botaoCadastro: {
         position: 'absolute',
         width: 295,
@@ -207,5 +205,4 @@ const styles = StyleSheet.create({
         fontSize: 40,
         lineHeight: 48
     },
-
 })
