@@ -6,16 +6,22 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 {/*importar telas */ }
 import { TelaOng } from '@telasOngs/telaOng/ongs.js';
 import { TelaOng2 } from '@telasOngs/telaOng2/ongs.js';
 import { TelaOng3 } from '@telasOngs/telaOng3/ongs.js';
 =======
+=======
+>>>>>>> ba3ac3ca385d99affd321151dec7c02ff12cf618
 {/*importar telas */}
 import {TelaOng} from './src/ongs/App.js';
 import { TelaOng2 } from './src/ongs/App.js';
 import { TelaOng3 } from './src/ongs/App.js';
+<<<<<<< HEAD
 >>>>>>> 3237f20 (vaersão 2.0)
+=======
+>>>>>>> ba3ac3ca385d99affd321151dec7c02ff12cf618
 
 SplashScreen.preventAutoHideAsync();
 
@@ -108,10 +114,14 @@ export default function App({ navigation }) {
   SplashScreen.hideAsync();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   {/*funções para criar as telas*/ }
 =======
   {/*funções para criar as telas*/}
 >>>>>>> 3237f20 (vaersão 2.0)
+=======
+  {/*funções para criar as telas*/}
+>>>>>>> ba3ac3ca385d99affd321151dec7c02ff12cf618
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerTitle: ''}} initialRouteName="Tela">

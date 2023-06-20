@@ -14,6 +14,7 @@
     "expo": "~48.0.9",
     "expo-font": "~11.1.1",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "expo-splash-screen": "^0.18.2",
     "expo-status-bar": "~1.4.4",
     "react": "18.2.0",
@@ -25,6 +26,12 @@
     "react": "18.2.0",
     "react-native": "0.71.7",
 >>>>>>> 3237f20 (vaersão 2.0)
+=======
+    "expo-splash-screen": "~0.18.2",
+    "expo-status-bar": "~1.4.4",
+    "react": "18.2.0",
+    "react-native": "0.71.7",
+>>>>>>> ba3ac3ca385d99affd321151dec7c02ff12cf618
     "react-scroll": "^1.8.9"
   },
   "devDependencies": {
