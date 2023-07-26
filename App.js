@@ -1,7 +1,5 @@
-import { StyleSheet, Text, View, TextInput, Image, Modal, SafeAreaView, TouchableOpacity } from 'react-native';
-import { useFonts } from 'expo-font';
+import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
-import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -9,6 +7,22 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { TelaOng } from '@telasOngs/telaOng/ongs.js';
 import { TelaOng2 } from '@telasOngs/telaOng2/ongs.js';
 import { TelaOng3 } from '@telasOngs/telaOng3/ongs.js';
+import { TelaOng4} from '@telasOngs/telaOng4/ongs.js';
+import { TelaOng5} from '@telasOngs/telaOng5/ongs.js';
+import { TelaOng6} from '@telasOngs/telaOng6/ongs.js';
+import { TelaPessoas } from 'src/pessoas/telaPessoas/pessoas.js';
+import { TelaPessoas2} from 'src/pessoas/telaPessoas2/pessoas.js';
+import { TelaPessoas3} from 'src/pessoas/telaPessoas3/pessoas.js';
+import { TelaPessoas4} from 'src/pessoas/telaPessoas4/pessoas.js';
+import { TelaPessoas5} from 'src/pessoas/telaPessoas5/pessoas.js';
+import { TelaPessoas6} from 'src/pessoas/telaPessoas6/pessoas.js';
+import { TelaPessoas7} from 'src/pessoas/telaPessoas7/pessoas.js';
+import { TelaNecessitados } from 'src/necessitados/telaNecessitados/necessitados.js';
+import { TelaNecessitados2 } from 'src/necessitados/telaNecessitados2/necessitados.js';
+import { TelaNecessitados3 } from 'src/necessitados/telaNecessitados3/necessitados.js';
+import { TelaNecessitados4 } from 'src/necessitados/telaNecessitados4/necessitados';
+
+
 
 
 SplashScreen.preventAutoHideAsync();
@@ -19,18 +33,20 @@ style:cria um estilo para cada coisa ex:um estilo de texto, com esse estilo vc m
 function Tela1({ navigation }) {
   return (
     <>
-      <Text style={styles.text}>Bem vindo!</Text>
-      <Image style={{ width: 150, height: 150, left:250, bottom: 15}} source={require('@assets/img9.png')} />
-      <View style={styles.boxRed}>
-        <Text style={styles.usuario}>Usuario:</Text>
-        <TextInput style={styles.InputUsuario}></TextInput>
-        <Text style={styles.senha}>Senha:</Text>
-        <TextInput style={styles.InputSenha}></TextInput>
-        <TouchableOpacity style={styles.botaoLogin}
-          onPress={() => { navigation.navigate("Tela2"); }}
-        >
-          <Text style={styles.textLogin}>Entre!</Text>
-        </TouchableOpacity>
+      <View style={styles.container}>
+        <Text style={styles.text}>login</Text>
+        <View style={styles.boxWhite}>
+          <Text style={styles.usuario}>Usuario:</Text>
+          <TextInput style={styles.InputUsuario}></TextInput>
+          <Text style={styles.senha}>Senha:</Text>
+          <TextInput style={styles.InputSenha}></TextInput>
+          <TouchableOpacity style={styles.botaoLogin}
+            onPress={() => { navigation.navigate("Tela2"); }}
+          >
+            <Text style={styles.textLogin}>Entre!</Text>
+          </TouchableOpacity>
+          <Text style={styles.textConta}>vagvgwygyaegy</Text>
+        </View>
       </View>
 
     </>
@@ -45,20 +61,20 @@ function Tela2({ navigation }) {
           <Text style={styles.textIdentificar}>Quem é você?</Text>
           <View style={{ position: 'absolute', width: 500, height: 120, top: 380, paddingLeft: 110, paddingTop: 10, flexDirection: 'row' }}>
             <TouchableOpacity onPress={() => { navigation.navigate("TelaOng"); }}>
-              <Image style={{ width: 75, height: 75, right:20}} source={require('@assets/img1.png')} />
+              <Image style={{ width: 75, height: 75, right: 20 }} source={require('@assets/img1.png')} />
               <Text style={styles.textButton1}>Ong</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => { navigation.navigate("TelaVoluntario"); }}>
+            <TouchableOpacity onPress={() => { navigation.navigate("TelaPessoas"); }}>
               <Image style={{ width: 75, height: 75 }} source={require('@assets/img2.png')} />
               <Text style={styles.textButton2}>Voluntário</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => { navigation.navigate("TelaNecessitado"); }}>
-              <Image style={{ width: 75, height: 75, left:20 }} source={require('@assets/img3.png')} />
+            <TouchableOpacity onPress={() => { navigation.navigate("TelaNecessitados"); }}>
+              <Image style={{ width: 75, height: 75, left: 20 }} source={require('@assets/img3.png')} />
               <Text style={styles.textButton3}>Necessitado</Text>
             </TouchableOpacity>
+          </View>
         </View>
       </View>
-    </View>
     </>
   )
 }
@@ -87,12 +103,26 @@ export default function App({ navigation }) {
   {/*funções para criar as telas*/ }
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerTitle: ''}} initialRouteName="Tela">
+      <Stack.Navigator screenOptions={{ headerTitle: '' }} initialRouteName="Tela">
         <Stack.Screen name="Tela" component={Tela1} />
         <Stack.Screen name="Tela2" component={Tela2} />
         <Stack.Screen name="TelaOng" component={TelaOng} />
         <Stack.Screen name="TelaOng2" component={TelaOng2} />
         <Stack.Screen name="TelaOng3" component={TelaOng3} />
+        <Stack.Screen name="TelaOng4" component={TelaOng4} />
+        <Stack.Screen name="TelaOng5" component={TelaOng5} />
+        <Stack.Screen name="TelaOng6" component={TelaOng6} />
+        <Stack.Screen name="TelaPessoas" component={TelaPessoas} />
+        <Stack.Screen name="TelaPessoas2" component={TelaPessoas2} />
+        <Stack.Screen name="TelaPessoas3" component={TelaPessoas3} />
+        <Stack.Screen name="TelaPessoas4" component={TelaPessoas4} />
+        <Stack.Screen name="TelaPessoas5" component={TelaPessoas5} />
+        <Stack.Screen name="TelaPessoas6" component={TelaPessoas6} />
+        <Stack.Screen name="TelaPessoas7" component={TelaPessoas7} />
+        <Stack.Screen name="TelaNecessitados" component={TelaNecessitados} />
+        <Stack.Screen name="TelaNecessitados2" component={TelaNecessitados2} />
+        <Stack.Screen name="TelaNecessitados3" component={TelaNecessitados3} />
+        <Stack.Screen name="TelaNecessitados4" component={TelaNecessitados4} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -104,12 +134,13 @@ mudar cor,formato, tipo de letra etc) */}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFE0',
+    backgroundColor: '#E55934',
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   text: {
-    color:'#000',
+    color: '#FAEDCD',
     fontStyle: 'normal',
     fontFamily: 'normal',
     fontWeight: 400,
@@ -122,21 +153,22 @@ const styles = StyleSheet.create({
     top: 31
   },
 
-  boxRed: {
+  boxWhite: {
     position: 'absolute',
     width: 415,
     height: 772,
     left: 0,
     top: 100,
-    backgroundColor: '#DC2F02',
+    backgroundColor: '#FAEDCD',
     borderRadius: 29
   },
+
   usuario: {
     position: 'absolute',
     width: 221,
     height: 36,
     left: 61,
-    top: 100,
+    top: 80,
     fontFamily: 'normal',
     fontStyle: 'normal',
     fontWeight: 400,
@@ -144,21 +176,23 @@ const styles = StyleSheet.create({
     lineHeight: 39,
     color: '#000000',
   },
+
   InputUsuario: {
     position: 'absolute',
     width: 267,
     height: 37,
     left: 61,
-    top: 150,
-    backgroundColor: '#FFFFE0',
+    top: 130,
+    backgroundColor: '#E55934',
     borderRadius: 20,
   },
+
   senha: {
     position: 'absolute',
     width: 221,
     height: 36,
     left: 61,
-    top: 200,
+    top: 180,
     fontFamily: 'normal',
     fontStyle: 'normal',
     fontWeight: 400,
@@ -166,24 +200,27 @@ const styles = StyleSheet.create({
     lineHeight: 39,
     color: '#000000',
   },
+
   InputSenha: {
     position: 'absolute',
     width: 267,
     height: 37,
     left: 61,
-    top: 260,
-    backgroundColor: '#FFFFE0',
+    top: 220,
+    backgroundColor: '#E55934',
     borderRadius: 20,
   },
+
   botaoLogin: {
     position: 'absolute',
     width: 295,
     height: 77,
     left: 46,
-    top: 400,
-    backgroundColor: '#FFFFE0',
+    top: 280,
+    backgroundColor: '#E55934',
     borderRadius: 20,
   },
+
   textLogin: {
     position: 'absolute',
     textAlign: 'center',
@@ -196,15 +233,29 @@ const styles = StyleSheet.create({
     fontWeight: 400,
     fontSize: 40,
     lineHeight: 50,
-    color: '#000000',
+    color: '#FAEDCD',
   },
+
+  textConta:{
+    position: 'relative',
+    width: 221,
+    height: 36,
+    left: 61,
+    top: 360,
+    fontFamily: 'normal',
+    fontStyle: 'normal',
+    fontSize: 20,
+    color: '#000000'
+  },
+
   identificar: {
     position: 'relative',
     width: 450,
     height: 850,
-    backgroundColor: '#6A040F',
+    backgroundColor: '#FA7921',
 
   },
+
   textIdentificar: {
     position: 'absolute',
     width: 350,
@@ -216,20 +267,20 @@ const styles = StyleSheet.create({
     fontWeight: 400,
     fontSize: 40,
     lineHeight: 48,
-    color: '#FFFFFF',
+    color: '#FAEDCD',
   },
 
-  textButton1:{
-    color:'#FFFFFF'
+  textButton1: {
+    color: '#FAEDCD'
   },
 
-  textButton2:{
-    color:'#FFFFFF'
+  textButton2: {
+    color: '#FAEDCD'
   },
 
-  textButton3:{
-    color:'#FFFFFF',
-    left:20
-  }
+  textButton3: {
+    color: '#FAEDCD',
+    left: 20
+  },
 
 });

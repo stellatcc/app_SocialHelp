@@ -16,7 +16,7 @@
     "expo-splash-screen": "^0.18.2",
     "expo-status-bar": "~1.4.4",
     "react": "18.2.0",
-    "react-native": "^0.71.8",
+    "react-native": "0.71.8",
     "react-navigation": "^4.4.4",
     "react-scroll": "^1.8.9"
   },

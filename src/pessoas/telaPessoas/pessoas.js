@@ -3,22 +3,20 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
-export function TelaOng({ navigation }) {
+export function TelaPessoas({ navigation }) {
     return (
         <>
             <View style={styles.conteiner}>
-                <Text style={styles.text}>Cadastro Ong's</Text>
+                <Text style={styles.text}>Cadastro Pessoas</Text>
                 <ScrollView contentContainerStyle={styles.boxWhite}>
                     <Text style={styles.nome}>Nome:</Text>
                     <TextInput style={styles.InputNome}></TextInput>
-                    <Text style={styles.nomeOng}>Nome da ONG:</Text>
-                    <TextInput style={styles.InputOng}></TextInput>
                     <Text style={styles.email}>E-mail:</Text>
                     <TextInput style={styles.InputEmail}></TextInput>
                     <Text style={styles.numero}>Número de contato:</Text>
                     <TextInput style={styles.InputContato}></TextInput>
                     <Text style={styles.ajuda}>Forma de Ajuda:</Text>
-                    <View style={{ position: 'absolute', left: 20, bottom: 220, flexDirection: 'row', width: 500, height: 100 }}>
+                    <View style={{ position: 'absolute', left: 20, bottom: 210, flexDirection: 'row', width: 500, height: 100 }}>
                         <View style={{ flexDirection: 'row' }}>
                             <TouchableOpacity style={styles.branco} onPress={() => { trocaEstilo() }}></TouchableOpacity>
                             <Image></Image>
@@ -29,9 +27,9 @@ export function TelaOng({ navigation }) {
                         </View>
                     </View>
                     <TouchableOpacity style={styles.proximo}
-                        onPress={() => { navigation.navigate("TelaOng2"); }}
+                        onPress={() => { navigation.navigate("TelaPessoas2"); }}
                     >
-                        <Image style={{ width: 50, height: 50, top: 10, left: 280 }} source={require('@assets/img12.png')}></Image>
+                        <Image style={{ width: 50, height: 50, bottom: 5, left: 280 }} source={require('@assets/img12.png')}></Image>
                     </TouchableOpacity>
                 </ScrollView>
             </View>
@@ -44,20 +42,18 @@ export function TelaOng({ navigation }) {
 const styles = StyleSheet.create({
     conteiner: {
         flex: 1,
-        backgroundColor: '#FDE74C',
+        backgroundColor: '#9BC53D',
         alignItems: 'center',
         justifyContent: 'center',
     },
     text: {
         position: 'absolute',
-        width: 322,
-        height: 49,
         left: 19,
-        top: 20,
+        top:-50,
         fontStyle: 'normal',
         fontWeight: 400,
         fontSize: 40,
-        lineHeight: 48
+        lineHeight: 150
     },
 
     boxWhite: {
@@ -74,7 +70,7 @@ const styles = StyleSheet.create({
         width: 221,
         height: 36,
         left: 46,
-        top: 10,
+        top: 50,
         fontStyle: 'normal',
         fontWeight: 400,
         fontSize: 32,
@@ -86,37 +82,17 @@ const styles = StyleSheet.create({
         width: 295,
         height: 37,
         left: 46,
-        top: 50,
-        backgroundColor: '#FDE74C',
+        top: 100,
+        backgroundColor: '#9BC53D',
         borderRadius: 20,
     },
-    nomeOng: {
-        position: 'absolute',
-        width: 244.18,
-        height: 33.33,
-        left: 46,
-        top: 90,
-        fontStyle: 'normal',
-        fontWeight: 400,
-        fontSize: 32,
-        lineHeight: 39,
-        color: '#000'
-    },
-    InputOng: {
-        position: 'absolute',
-        width: 295,
-        height: 37,
-        left: 46,
-        top: 140,
-        backgroundColor: '#FDE74C',
-        borderRadius: 20
-    },
+    
     email: {
         position: 'absolute',
         width: 244.18,
         height: 36,
         left: 46,
-        top: 190,
+        top: 150,
         fontStyle: 'normal',
         fontWeight: 400,
         fontSize: 32,
@@ -128,8 +104,8 @@ const styles = StyleSheet.create({
         width: 295,
         height: 37,
         left: 46,
-        top: 235,
-        backgroundColor: '#FDE74C',
+        top: 200,
+        backgroundColor: '#9BC53D',
         borderRadius: 20
     },
     numero: {
@@ -137,7 +113,7 @@ const styles = StyleSheet.create({
         width: 295,
         height: 36,
         left: 46,
-        top: 280,
+        top: 250,
         fontStyle: 'normal',
         fontWeight: 400,
         fontSize: 32,
@@ -149,8 +125,8 @@ const styles = StyleSheet.create({
         width: 295,
         height: 37,
         left: 46,
-        top: 330,
-        backgroundColor: '#FDE74C',
+        top: 300,
+        backgroundColor: '#9BC53D',
         borderRadius: 20
     },
     ajuda: {
@@ -158,7 +134,7 @@ const styles = StyleSheet.create({
         width: 295,
         height: 36,
         left: 46,
-        top: 380,
+        top: 350,
         fontStyle: 'normal',
         fontWeight: 400,
         fontSize: 32,

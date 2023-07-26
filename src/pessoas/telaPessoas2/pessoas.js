@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
-export function TelaOng2({ navigation }) {
+export function TelaPessoas2({ navigation }) {
     return (
         <>
             <View style={styles.conteiner}>
@@ -15,7 +15,7 @@ export function TelaOng2({ navigation }) {
                     <Text style={styles.senha}>Digite uma {'\n'}senha:</Text>
                     <TextInput style={styles.InputSenha}></TextInput>
                     <TouchableOpacity style={styles.botaoCadastro}
-                        onPress={() => { navigation.navigate("TelaOng3"); }}
+                        onPress={() => { navigation.navigate("TelaPessoas3"); }}
                     >
                         <Text style={styles.textCadastro}>Cadastre-se!</Text>
                     </TouchableOpacity>
@@ -29,7 +29,7 @@ export function TelaOng2({ navigation }) {
 const styles = StyleSheet.create({
     conteiner: {
         flex: 1,
-        backgroundColor: '#FDE74C',
+        backgroundColor: '#9BC53D',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
         height: 37,
         left: 46,
         top: 200,
-        backgroundColor: '#FDE74C',
+        backgroundColor: '#9BC53D',
         borderRadius: 20,
     },
 
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
         height: 37,
         left: 46,
         top: 350,
-        backgroundColor: '#FDE74C',
+        backgroundColor: '#9BC53D',
         borderRadius: 20,
     },
 
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
         height: 77,
         left: 46,
         top: 450,
-        backgroundColor:'#FDE74C',
+        backgroundColor:'#9BC53D',
         borderRadius:30
     },
 })
