@@ -12,7 +12,7 @@ module.exports = function(api) {
           ],
           alias:{
             "@telasNecessitados": "./src/necessitados",
-            "@telasVoluntarios": "./src/voluntarios",
+            "@telasPessoas": "./src/pessoas",
             "@telasOngs": "./src/ongs",
             "@assets": "./assets",
             "@fonts": "./assets/fonts"

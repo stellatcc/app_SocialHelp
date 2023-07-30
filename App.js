@@ -10,17 +10,19 @@ import { TelaOng3 } from '@telasOngs/telaOng3/ongs.js';
 import { TelaOng4} from '@telasOngs/telaOng4/ongs.js';
 import { TelaOng5} from '@telasOngs/telaOng5/ongs.js';
 import { TelaOng6} from '@telasOngs/telaOng6/ongs.js';
-import { TelaPessoas } from 'src/pessoas/telaPessoas/pessoas.js';
-import { TelaPessoas2} from 'src/pessoas/telaPessoas2/pessoas.js';
-import { TelaPessoas3} from 'src/pessoas/telaPessoas3/pessoas.js';
-import { TelaPessoas4} from 'src/pessoas/telaPessoas4/pessoas.js';
-import { TelaPessoas5} from 'src/pessoas/telaPessoas5/pessoas.js';
-import { TelaPessoas6} from 'src/pessoas/telaPessoas6/pessoas.js';
-import { TelaPessoas7} from 'src/pessoas/telaPessoas7/pessoas.js';
-import { TelaNecessitados } from 'src/necessitados/telaNecessitados/necessitados.js';
-import { TelaNecessitados2 } from 'src/necessitados/telaNecessitados2/necessitados.js';
-import { TelaNecessitados3 } from 'src/necessitados/telaNecessitados3/necessitados.js';
-import { TelaNecessitados4 } from 'src/necessitados/telaNecessitados4/necessitados';
+import { TelaPessoas } from '@telasPessoas/telaPessoas/pessoas.js';
+import { TelaPessoas2} from '@telasPessoas/telaPessoas2/pessoas.js';
+import { TelaPessoas3} from '@telasPessoas/telaPessoas3/pessoas.js';
+import { TelaPessoas4} from '@telasPessoas/telaPessoas4/pessoas.js';
+import { TelaPessoas5} from '@telasPessoas/telaPessoas5/pessoas.js';
+import { TelaPessoas6} from '@telasPessoas/telaPessoas6/pessoas.js';
+import { TelaPessoas7} from '@telasPessoas/telaPessoas7/pessoas.js';
+import { TelaNecessitados } from '@telasNecessitados/telaNecessitados/necessitados.js';
+import { TelaNecessitados2 } from '@telasNecessitados/telaNecessitados2/necessitados.js';
+import { TelaNecessitados3 } from '@telasNecessitados/telaNecessitados3/necessitados.js';
+import { TelaNecessitados4 } from '@telasNecessitados/telaNecessitados4/necessitados.js';
+import { TelaNecessitados5 } from '@telasNecessitados/telaNecessitados5/necessitados.js';
+import { TelaNecessitados6 } from '@telasNecessitados/telaNecessitados6/necessitados.js';
 
 
 
@@ -64,7 +66,7 @@ function Tela2({ navigation }) {
               <Image style={{ width: 75, height: 75, right: 20 }} source={require('@assets/img1.png')} />
               <Text style={styles.textButton1}>Ong</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => { navigation.navigate("TelaPessoas"); }}>
+            <TouchableOpacity onPress={() => { navigation.navigate("t"); }}>
               <Image style={{ width: 75, height: 75 }} source={require('@assets/img2.png')} />
               <Text style={styles.textButton2}>Voluntário</Text>
             </TouchableOpacity>
@@ -123,6 +125,8 @@ export default function App({ navigation }) {
         <Stack.Screen name="TelaNecessitados2" component={TelaNecessitados2} />
         <Stack.Screen name="TelaNecessitados3" component={TelaNecessitados3} />
         <Stack.Screen name="TelaNecessitados4" component={TelaNecessitados4} />
+        <Stack.Screen name="TelaNecessitados5" component={TelaNecessitados5} />
+        <Stack.Screen name="TelaNecessitados6" component={TelaNecessitados6} />
       </Stack.Navigator>
     </NavigationContainer>
   );

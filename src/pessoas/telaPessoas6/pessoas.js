@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-
+    
     text: {
         position: 'absolute',
         left: 19,

@@ -27,7 +27,7 @@ export function TelaNecessitados3({ navigation }) {
             style = styles.cardInvisible
         }
         return (
-            <TouchableOpacity key={index} style={style} onPress={() => { navigation.navigate("TelaNecessitados4"); }}>
+            <TouchableOpacity key={index} style={style} onPress={() => { navigation.navigate("TelaNecessitados5"); }}>
                 <Image style={{ width: 80, height: 80, top: 30, left: 30 }} source={require('@assets/img4.png')} />
                 <Text style={styles.nome}>{value.nome}</Text>
             </TouchableOpacity>
@@ -51,7 +51,7 @@ export function TelaNecessitados3({ navigation }) {
                     <TouchableOpacity onPress={() => { navigation.navigate("TelaNecessitados3"); }}>
                         <Image style={{ width: 35, height: 35, top:65, left: 100 }} source={require('@assets/img7.png')} />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => { navigation.navigate("TelaNecessitados7"); }}>
+                    <TouchableOpacity onPress={() => { navigation.navigate("TelaNecessitados6"); }}>
                         <Image style={{ width: 35, height: 35, left: 250, top: 30 }} source={require('@assets/img8.png')} />
                     </TouchableOpacity>
 
