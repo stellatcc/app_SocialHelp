@@ -47,7 +47,8 @@ function Tela1({ navigation }) {
           >
             <Text style={styles.textLogin}>Entre!</Text>
           </TouchableOpacity>
-          <Text style={styles.textConta}>vagvgwygyaegy</Text>
+          <Text style={styles.textConta}>Não possui conta?</Text>
+          <Text onPress={() => { navigation.navigate("TelaOng"); }} style={styles.textConta2}>Cadastre-se</Text>
         </View>
       </View>
 
@@ -66,7 +67,7 @@ function Tela2({ navigation }) {
               <Image style={{ width: 75, height: 75, right: 20 }} source={require('@assets/img1.png')} />
               <Text style={styles.textButton1}>Ong</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => { navigation.navigate("t"); }}>
+            <TouchableOpacity onPress={() => { navigation.navigate("TelaPessoas"); }}>
               <Image style={{ width: 75, height: 75 }} source={require('@assets/img2.png')} />
               <Text style={styles.textButton2}>Voluntário</Text>
             </TouchableOpacity>
@@ -250,6 +251,18 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
     fontSize: 20,
     color: '#000000'
+  },
+
+  textConta2:{
+    position: 'relative',
+    width: 221,
+    height: 36,
+    left: 61,
+    top: 360,
+    fontFamily: 'normal',
+    fontStyle: 'normal',
+    fontSize: 20,
+    color: '#FA7921'
   },
 
   identificar: {

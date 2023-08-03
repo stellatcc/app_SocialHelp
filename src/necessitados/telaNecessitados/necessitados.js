@@ -1,13 +1,21 @@
-import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, ScrollView } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { 
+    StyleSheet, 
+    Text, 
+    View, 
+    TextInput, 
+    Image, 
+    TouchableOpacity, 
+    ScrollView, 
+    SafeAreaView 
+} from 'react-native';
 
 
 export function TelaNecessitados({ navigation }) {
     return (
         <>
             <View style={styles.conteiner}>
-                <Text style={styles.text}>Cadastro Necessitados</Text>
+                <Text style={styles.text}>Cadastro Necessita{'\n'}dos</Text>
+                <SafeAreaView>
                 <ScrollView contentContainerStyle={styles.boxWhite}>
                     <Text style={styles.nome}>Nome:</Text>
                     <TextInput style={styles.InputNome}></TextInput>
@@ -15,7 +23,7 @@ export function TelaNecessitados({ navigation }) {
                     <TextInput style={styles.InputEmail}></TextInput>
                     <Text style={styles.numero}>Número de contato:</Text>
                     <TextInput style={styles.InputContato}></TextInput>
-                    <Text style={styles.ajuda}>Forma de Ajuda:</Text>
+                    <Text style={styles.ajuda}>Possui familia?</Text>
                     <View style={{ position: 'absolute', left: 20, bottom: 210, flexDirection: 'row', width: 500, height: 100 }}>
                         <View style={{ flexDirection: 'row' }}>
                             <TouchableOpacity style={styles.branco} onPress={() => { trocaEstilo() }}></TouchableOpacity>
@@ -26,12 +34,17 @@ export function TelaNecessitados({ navigation }) {
                             <Image></Image>
                         </View>
                     </View>
+                    <Text style={styles.qtd}>Se sim, quantos integrantes?</Text>
+                    <TextInput style={styles.InputQtd}></TextInput>
                     <TouchableOpacity style={styles.proximo}
                         onPress={() => { navigation.navigate("TelaNecessitados2"); }}
                     >
                         <Image style={{ width: 50, height: 50, bottom: 5, left: 280 }} source={require('@assets/img12.png')}></Image>
                     </TouchableOpacity>
+                    <Text style={styles.textConta}>Você é uma ong?</Text>
+                    <Text onPress={() => { navigation.navigate("TelaOng"); }} style={styles.textConta2}>clique aqui</Text>
                 </ScrollView>
+                </SafeAreaView>
             </View>
         </>
     )
@@ -49,19 +62,17 @@ const styles = StyleSheet.create({
     text: {
         position: 'absolute',
         left: 19,
-        top:-50,
-        fontStyle: 'normal',
+        top: 15,
         fontWeight: 400,
         fontSize: 40,
-        lineHeight: 150
+        lineHeight: 45,
     },
 
     boxWhite: {
         position: 'relative',
         width: 415,
-        height: 772,
-        left: 0,
-        top: 85,
+        height: 1000,
+        top: 100,
         backgroundColor: '#FFFFD8',
         borderRadius: 29
     },
@@ -129,6 +140,28 @@ const styles = StyleSheet.create({
         backgroundColor: '#5BC0EB',
         borderRadius: 20
     },
+
+    qtd: {
+        position: 'absolute',
+        width: 295,
+        height: 36,
+        left: 46,
+        marginTop: 530,
+        fontStyle: 'normal',
+        fontWeight: 400,
+        fontSize: 32,
+        lineHeight: 39,
+        color: '#000',
+    },
+    InputQtd: {
+        position: 'absolute',
+        width: 295,
+        height: 37,
+        left: 46,
+        marginTop: 580,
+        backgroundColor: '#5BC0EB',
+        borderRadius: 20
+    },
     ajuda: {
         position: 'absolute',
         width: 295,
@@ -141,25 +174,36 @@ const styles = StyleSheet.create({
         lineHeight: 39,
         color: '#000'
     },
+    textConta:{
+        position: 'relative',
+        width: 221,
+        height: 36,
+        left: 61,
+        top: 650,
+        fontFamily: 'normal',
+        fontStyle: 'normal',
+        fontSize: 20,
+        color: '#000000'
+      },
+    
+    textConta2:{
+        position: 'relative',
+        width: 221,
+        height: 36,
+        left: 220,
+        top: 615,
+        fontFamily: 'normal',
+        fontStyle: 'normal',
+        fontSize: 20,
+        color: '#FDE74C'
+      },
 
-    preto: {
-        backgroundColor: 'black',
-        width: 20,
-        height: 20,
-        borderRadius: 60
-    },
-
-    branco: {
-        backgroundColor: 'white',
-        width: 20,
-        height: 20,
-        borderRadius: 60
-    },
+   
     proximo: {
         position: 'absolute',
         width: 295,
         height: 77,
         left: 46,
-        top: 520,
+        marginTop: 780,
     }
 })
