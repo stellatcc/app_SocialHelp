@@ -48,7 +48,7 @@ function Tela1({ navigation }) {
             <Text style={styles.textLogin}>Entre!</Text>
           </TouchableOpacity>
           <Text style={styles.textConta}>Não possui conta?</Text>
-          <Text onPress={() => { navigation.navigate("TelaOng"); }} style={styles.textConta2}>Cadastre-se</Text>
+          <Text onPress={() => { navigation.navigate("Tela2"); }} style={styles.textConta2}>Cadastre-se</Text>
         </View>
       </View>
 
@@ -81,6 +81,9 @@ function Tela2({ navigation }) {
     </>
   )
 }
+
+
+       
 
 const Stack = createNativeStackNavigator();
 

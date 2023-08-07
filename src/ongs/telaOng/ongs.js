@@ -33,8 +33,7 @@ export function TelaOng({ navigation }) {
                     >
                         <Image style={{ width: 50, height: 50, top: 10, left: 280 }} source={require('@assets/img12.png')}></Image>
                     </TouchableOpacity>
-                    <Text style={styles.textConta}>Você é voluntário?</Text>
-                    <Text onPress={() => { navigation.navigate("TelaPessoas"); }} style={styles.textConta2}>clique aqui</Text>
+              
                 </ScrollView>
             </View>
         </>
@@ -167,30 +166,6 @@ const styles = StyleSheet.create({
         lineHeight: 39,
         color: '#000'
     },
-    textConta:{
-        position: 'relative',
-        width: 221,
-        height: 36,
-        left: 61,
-        top: 600,
-        fontFamily: 'normal',
-        fontStyle: 'normal',
-        fontSize: 20,
-        color: '#000000'
-      },
-    
-    textConta2:{
-        position: 'relative',
-        width: 221,
-        height: 36,
-        left: 230,
-        top: 564,
-        fontFamily: 'normal',
-        fontStyle: 'normal',
-        fontSize: 20,
-        color: '#9BC53D'
-      },
-
     preto: {
         backgroundColor: 'black',
         width: 20,

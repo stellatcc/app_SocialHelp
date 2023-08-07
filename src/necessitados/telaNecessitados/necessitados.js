@@ -41,8 +41,7 @@ export function TelaNecessitados({ navigation }) {
                     >
                         <Image style={{ width: 50, height: 50, bottom: 5, left: 280 }} source={require('@assets/img12.png')}></Image>
                     </TouchableOpacity>
-                    <Text style={styles.textConta}>Você é uma ong?</Text>
-                    <Text onPress={() => { navigation.navigate("TelaOng"); }} style={styles.textConta2}>clique aqui</Text>
+                    
                 </ScrollView>
                 </SafeAreaView>
             </View>
@@ -174,31 +173,6 @@ const styles = StyleSheet.create({
         lineHeight: 39,
         color: '#000'
     },
-    textConta:{
-        position: 'relative',
-        width: 221,
-        height: 36,
-        left: 61,
-        top: 650,
-        fontFamily: 'normal',
-        fontStyle: 'normal',
-        fontSize: 20,
-        color: '#000000'
-      },
-    
-    textConta2:{
-        position: 'relative',
-        width: 221,
-        height: 36,
-        left: 220,
-        top: 615,
-        fontFamily: 'normal',
-        fontStyle: 'normal',
-        fontSize: 20,
-        color: '#FDE74C'
-      },
-
-   
     proximo: {
         position: 'absolute',
         width: 295,
