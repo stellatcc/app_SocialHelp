@@ -6,7 +6,8 @@
             "@telasVoluntarios": ["src/voluntarios/*"],
             "@telasOngs": ["src/ongs/*"],
             "@assets": ["assets/*"],
-            "@fonts": ["assets/fonts/*"]
+            "@fonts": ["assets/fonts/*"],
+            "@banco":["BancoDados/*"]
         }
     }
 }

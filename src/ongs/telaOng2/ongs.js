@@ -1,21 +1,33 @@
 import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, ScrollView } from 'react-native';
-import * as SplashScreen from 'expo-splash-screen';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import axios from 'axios';
+import { url } from '@banco/url.js';
+import { useState } from 'react';
 
 
-export function TelaOng2({ navigation }) {
+export function TelaOng2({ route, navigation }) {
+    const [nomeUsuario, setNomeUsuario] = useState();
+    const [senha, setSenha] = useState();
+
+    const {nome, nomeOng, email, contato} = route.params;
+
+    const cadastrarOngs = async () => {
+        const response = await axios.post(url + "/SocialHelp/cadastroOng.php", {nome, nomeOng, nomeUsuario, email, contato, senha});
+    }
+
     return (
         <>
             <View style={styles.conteiner}>
                 <Text style={styles.text}>Por último</Text>
                 <ScrollView contentContainerStyle={styles.boxWhite}>
                     <Text style={styles.nome}>Digite um nome de {'\n'} usuario:</Text>
-                    <TextInput style={styles.InputNome}></TextInput>
+                    <TextInput  onChangeText={(text) => setNomeUsuario(text)} style={styles.InputNome}></TextInput>
                     <Text style={styles.senha}>Digite uma {'\n'}senha:</Text>
-                    <TextInput style={styles.InputSenha}></TextInput>
+                    <TextInput onChangeText={(text) => setSenha(text)} style={styles.InputSenha}></TextInput>
                     <TouchableOpacity style={styles.botaoCadastro}
-                        onPress={() => { navigation.navigate("TelaOng3"); }}
+                        onPress={() => { 
+                            cadastrarOngs();
+                            navigation.navigate("TelaOng3"); 
+                        }}
                     >
                         <Text style={styles.textCadastro}>Cadastre-se!</Text>
                     </TouchableOpacity>

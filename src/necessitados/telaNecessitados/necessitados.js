@@ -1,16 +1,11 @@
-import { 
-    StyleSheet, 
-    Text, 
-    View, 
-    TextInput, 
-    Image, 
-    TouchableOpacity, 
-    ScrollView, 
-    SafeAreaView 
-} from 'react-native';
-
+import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
+import { useState } from 'react';
 
 export function TelaNecessitados({ navigation }) {
+    const [nome, setNome] = useState('');
+    const [email, setEmail] = useState('');
+    const [qtd, setQtd] = useState('');
+    const [contato, setContato] = useState('');
     return (
         <>
             <View style={styles.conteiner}>
@@ -18,11 +13,11 @@ export function TelaNecessitados({ navigation }) {
                 <SafeAreaView>
                 <ScrollView contentContainerStyle={styles.boxWhite}>
                     <Text style={styles.nome}>Nome:</Text>
-                    <TextInput style={styles.InputNome}></TextInput>
+                    <TextInput onChangeText={(text) => setNome(text)} style={styles.InputNome}></TextInput>
                     <Text style={styles.email}>E-mail:</Text>
-                    <TextInput style={styles.InputEmail}></TextInput>
+                    <TextInput onChangeText={(text) => setEmail(text)} style={styles.InputEmail}></TextInput>
                     <Text style={styles.numero}>Número de contato:</Text>
-                    <TextInput style={styles.InputContato}></TextInput>
+                    <TextInput onChangeText={(text) => setContato(text)} style={styles.InputContato}></TextInput>
                     <Text style={styles.ajuda}>Possui familia?</Text>
                     <View style={{ position: 'absolute', left: 20, bottom: 210, flexDirection: 'row', width: 500, height: 100 }}>
                         <View style={{ flexDirection: 'row' }}>
@@ -34,10 +29,10 @@ export function TelaNecessitados({ navigation }) {
                             <Image></Image>
                         </View>
                     </View>
-                    <Text style={styles.qtd}>Se sim, quantos integrantes?</Text>
-                    <TextInput style={styles.InputQtd}></TextInput>
+                    <Text style={styles.qtd}>Se sim, quantos{'\n'}integrantes?</Text>
+                    <TextInput onChangeText={(text) => setQtd(text)} style={styles.InputQtd}></TextInput>
                     <TouchableOpacity style={styles.proximo}
-                        onPress={() => { navigation.navigate("TelaNecessitados2"); }}
+                        onPress={() => { navigation.navigate("TelaNecessitados2", {nome, email, contato, qtd}); }}
                     >
                         <Image style={{ width: 50, height: 50, bottom: 5, left: 280 }} source={require('@assets/img12.png')}></Image>
                     </TouchableOpacity>

@@ -1,21 +1,32 @@
 import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, ScrollView } from 'react-native';
-import * as SplashScreen from 'expo-splash-screen';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import axios from 'axios';
+import { url } from '@banco/url.js';
+import { useState } from 'react';
 
 
-export function TelaNecessitados2({ navigation }) {
+export function TelaNecessitados2({ route, navigation }) {
+    const [nomeUsuario, setNomeUsuario] = useState('');
+    const [senha, setSenha] = useState('');
+
+    const {nome, email, contato, qtd} = route.params;
+
+    const CadastrarNecessitados = async () => {
+        const response = await axios.post(url + "/SocialHelp/cadastroNecessitados.php", {nome, email, contato, qtd});
+    }
     return (
         <>
             <View style={styles.conteiner}>
                 <Text style={styles.text}>Por último</Text>
                 <ScrollView contentContainerStyle={styles.boxWhite}>
                     <Text style={styles.nome}>Digite um nome de {'\n'} usuario:</Text>
-                    <TextInput style={styles.InputNome}></TextInput>
+                    <TextInput onChangeText={(text) => setNomeUsuario(text)} style={styles.InputNome}></TextInput>
                     <Text style={styles.senha}>Digite uma {'\n'}senha:</Text>
-                    <TextInput style={styles.InputSenha}></TextInput>
+                    <TextInput onChangeText={(text) => setSenha(text)} style={styles.InputSenha}></TextInput>
                     <TouchableOpacity style={styles.botaoCadastro}
-                        onPress={() => { navigation.navigate("TelaNecessitados3"); }}
+                        onPress={() => {
+                            CadastrarNecessitados();
+                            navigation.navigate("TelaNecessitados3"); 
+                        }}
                     >
                         <Text style={styles.textCadastro}>Cadastre-se!</Text>
                     </TouchableOpacity>

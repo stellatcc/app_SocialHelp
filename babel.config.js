@@ -15,7 +15,8 @@ module.exports = function(api) {
             "@telasPessoas": "./src/pessoas",
             "@telasOngs": "./src/ongs",
             "@assets": "./assets",
-            "@fonts": "./assets/fonts"
+            "@fonts": "./assets/fonts",
+            "@banco":"./BancoDados"
           }
         }
       ]
