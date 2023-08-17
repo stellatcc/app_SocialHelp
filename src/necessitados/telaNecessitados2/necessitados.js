@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import axios from 'axios';
 import { url } from '@banco/url.js';
 import { useState } from 'react';
@@ -8,10 +8,13 @@ export function TelaNecessitados2({ route, navigation }) {
     const [nomeUsuario, setNomeUsuario] = useState('');
     const [senha, setSenha] = useState('');
 
-    const {nome, email, contato, qtd} = route.params;
+    const {nome, email, contato, qtdIntegrantes} = route.params;
 
-    const CadastrarNecessitados = async () => {
-        const response = await axios.post(url + "/SocialHelp/cadastroNecessitados.php", {nome, email, contato, qtd});
+    const cadastrarNecessitados = async () => {
+        const response = await axios.post(
+            url + "/SocialHelp/cadastroNecessitados.php", 
+            { nome, email, nomeUsuario, senha, qtdIntegrantes, contato }
+        );
     }
     return (
         <>
@@ -24,7 +27,7 @@ export function TelaNecessitados2({ route, navigation }) {
                     <TextInput onChangeText={(text) => setSenha(text)} style={styles.InputSenha}></TextInput>
                     <TouchableOpacity style={styles.botaoCadastro}
                         onPress={() => {
-                            CadastrarNecessitados();
+                            cadastrarNecessitados();
                             navigation.navigate("TelaNecessitados3"); 
                         }}
                     >

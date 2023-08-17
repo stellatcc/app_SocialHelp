@@ -1,20 +1,23 @@
 import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, ScrollView } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useState } from 'react';
 
 
 export function TelaPessoas({ navigation }) {
+        const [nome, setNome] = useState('');
+        const [email, setEmail] = useState('');
+        const [contato, setContato] = useState('');
+
     return (
         <>
             <View style={styles.conteiner}>
                 <Text style={styles.text}>Cadastro Pessoas</Text>
                 <ScrollView contentContainerStyle={styles.boxWhite}>
                     <Text style={styles.nome}>Nome:</Text>
-                    <TextInput style={styles.InputNome}></TextInput>
+                    <TextInput onChangeText={(text) => setNome(text)} style={styles.InputNome}></TextInput>
                     <Text style={styles.email}>E-mail:</Text>
-                    <TextInput style={styles.InputEmail}></TextInput>
+                    <TextInput onChangeText={(text) => setEmail(text)} style={styles.InputEmail}></TextInput>
                     <Text style={styles.numero}>Número de contato:</Text>
-                    <TextInput style={styles.InputContato}></TextInput>
+                    <TextInput onChangeText={(text) => setContato(text)} style={styles.InputContato}></TextInput>
                     <Text style={styles.ajuda}>Forma de Ajuda:</Text>
                     <View style={{ position: 'absolute', left: 20, bottom: 210, flexDirection: 'row', width: 500, height: 100 }}>
                         <View style={{ flexDirection: 'row' }}>
@@ -27,7 +30,7 @@ export function TelaPessoas({ navigation }) {
                         </View>
                     </View>
                     <TouchableOpacity style={styles.proximo}
-                        onPress={() => { navigation.navigate("TelaPessoas2"); }}
+                        onPress={() => { navigation.navigate("TelaPessoas2", {nome, email, contato}); }}
                     >
                         <Image style={{ width: 50, height: 50, bottom: 5, left: 280 }} source={require('@assets/img12.png')}></Image>
                     </TouchableOpacity>

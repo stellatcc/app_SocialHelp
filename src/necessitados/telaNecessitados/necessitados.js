@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
 import { useState } from 'react';
 
+
 export function TelaNecessitados({ navigation }) {
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
-    const [qtd, setQtd] = useState('');
+    const [qtdIntegrantes, setQtdIntegrantes] = useState('');
     const [contato, setContato] = useState('');
+    
     return (
         <>
             <View style={styles.conteiner}>
@@ -29,10 +31,10 @@ export function TelaNecessitados({ navigation }) {
                             <Image></Image>
                         </View>
                     </View>
-                    <Text style={styles.qtd}>Se sim, quantos{'\n'}integrantes?</Text>
-                    <TextInput onChangeText={(text) => setQtd(text)} style={styles.InputQtd}></TextInput>
+                    <Text style={styles.qtd}>Se sim, quantos integrantes?</Text>
+                    <TextInput onChangeText={(text) => setQtdIntegrantes(text)} style={styles.InputQtd}></TextInput>
                     <TouchableOpacity style={styles.proximo}
-                        onPress={() => { navigation.navigate("TelaNecessitados2", {nome, email, contato, qtd}); }}
+                        onPress={() => { navigation.navigate("TelaNecessitados2", {nome, email, qtdIntegrantes, contato}); }}
                     >
                         <Image style={{ width: 50, height: 50, bottom: 5, left: 280 }} source={require('@assets/img12.png')}></Image>
                     </TouchableOpacity>
@@ -152,7 +154,7 @@ const styles = StyleSheet.create({
         width: 295,
         height: 37,
         left: 46,
-        marginTop: 580,
+        marginTop: 600,
         backgroundColor: '#5BC0EB',
         borderRadius: 20
     },

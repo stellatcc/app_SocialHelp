@@ -1,25 +1,39 @@
 import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, ScrollView } from 'react-native';
-import * as SplashScreen from 'expo-splash-screen';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import axios from 'axios';
+import { url } from '@banco/url.js';
+import { useState } from 'react';
 
+export function TelaPessoas2({ route, navigation }) {
+    const [nomeUsuario, setNomeUsuario] = useState('');
+    const [senha, setSenha] = useState('');
 
-export function TelaPessoas2({ navigation }) {
+    const { nome, email, contato } = route.params;
+
+    const cadastrarPessoas = async () => {
+        const response = await axios.post(
+            url + "/SocialHelp/cadastroPessoas.php",
+            { nome, email, contato, nomeUsuario, senha }
+        );
+    }
+
     return (
         <>
             <View style={styles.conteiner}>
                 <Text style={styles.text}>Por último</Text>
                 <ScrollView contentContainerStyle={styles.boxWhite}>
                     <Text style={styles.nome}>Digite um nome de {'\n'} usuario:</Text>
-                    <TextInput style={styles.InputNome}></TextInput>
+                    <TextInput onChangeText={(text) => setNomeUsuario(text)} style={styles.InputNome}></TextInput>
                     <Text style={styles.senha}>Digite uma {'\n'}senha:</Text>
-                    <TextInput style={styles.InputSenha}></TextInput>
+                    <TextInput onChangeText={(text) => setSenha(text)} style={styles.InputSenha}></TextInput>
                     <TouchableOpacity style={styles.botaoCadastro}
-                        onPress={() => { navigation.navigate("TelaPessoas3"); }}
+                        onPress={() => {
+                            cadastrarPessoas();
+                            navigation.navigate("TelaPessoas3");
+                        }}
                     >
                         <Text style={styles.textCadastro}>Cadastre-se!</Text>
                     </TouchableOpacity>
-                   
+
                 </ScrollView>
             </View>
         </>
@@ -61,7 +75,7 @@ const styles = StyleSheet.create({
         left: 46,
         top: 100,
         fontStyle: 'normal',
-        fontSize:32,
+        fontSize: 32,
         color: '#000'
     },
     InputNome: {
@@ -79,7 +93,7 @@ const styles = StyleSheet.create({
         left: 46,
         top: 250,
         fontStyle: 'normal',
-        fontSize:32,
+        fontSize: 32,
         color: '#000'
     },
     InputSenha: {
@@ -103,14 +117,14 @@ const styles = StyleSheet.create({
         fontSize: 40,
         lineHeight: 48
     },
-    
+
     botaoCadastro: {
         position: 'absolute',
         width: 295,
         height: 77,
         left: 46,
         top: 450,
-        backgroundColor:'#9BC53D',
-        borderRadius:30
+        backgroundColor: '#9BC53D',
+        borderRadius: 30
     },
 })
