@@ -31,6 +31,7 @@ export function Tela1({ navigation, route }) {
     const response = await axios.post(url + '/SocialHelp/login.php', {
       nomeUsuario,
       senha,
+      tipo,
     });
     response.data.success === true
       ? navigation.navigate(setTela())
