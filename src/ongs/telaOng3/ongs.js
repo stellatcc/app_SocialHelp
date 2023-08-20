@@ -1,14 +1,20 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import * as SplashScreen from 'expo-splash-screen';
-import { usuarios } from 'php/banco';
+import axios from 'axios';
+import { useState } from 'react';
+import { url } from '@banco/url.js';
 
 
 export function TelaOng3({ navigation }) {
+    const [data, setData] = useState([]);
+    const mostrarDados = async () => {
+        const response = await axios.get(url + "/SocialHelp/select.php");
+        setData(response.data.result);
+    }
+    mostrarDados();
+
     function cards(value, index, array) {
         return (
-            <TouchableOpacity key={index} style={styles.cards} onPress={() => { navigation.navigate("TelaOng4"); }}>
+            <TouchableOpacity key={index} style={styles.cards} onPress={() => { navigation.navigate("TelaOng4", value); }}>
                 <Image style={{ width: 80, height: 80, top: 30, left: 30 }} source={require('@assets/img4.png')} />
                 <Text style={styles.nome}>{value.nome}</Text>
             </TouchableOpacity>
@@ -24,7 +30,7 @@ export function TelaOng3({ navigation }) {
                 </View>
 
                 <ScrollView contentContainerStyle={styles.boxWhite}>
-                    {usuarios.map(cards)}
+                    {data.map(cards)}
                     <TouchableOpacity onPress={() => { navigation.navigate("TelaOng4");}}>
                         <Image style={{ width: 35, height: 35, bottom:2.5, left:100}} source={require('@assets/img7.png')} />
                     </TouchableOpacity>
@@ -84,7 +90,7 @@ const styles = StyleSheet.create({
         width: 136,
         height: 78,
         left: 120,
-        top: 40,
+        bottom:20,
         fontStyle: 'normal',
         fontWeight: 400,
         fontSize: 32,

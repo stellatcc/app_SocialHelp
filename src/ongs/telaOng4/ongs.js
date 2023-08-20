@@ -1,26 +1,24 @@
-import { StyleSheet, Text, View, TextInput, ScrollView, SafeAreaView} from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StyleSheet, Text, ScrollView, SafeAreaView} from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import { TouchableOpacity } from 'react-native';
 
 SplashScreen.preventAutoHideAsync();
 
-export function TelaOng4({ navigation }) {
+export function TelaOng4({ navigation, route }) {
     return (
         <SafeAreaView style={styles.fundo}>
             <ScrollView>
-                <Text style={styles.text}>Entre em contato com a pessoa pelo número fornecido!</Text>
-                <Text style={styles.nome}>Nome:</Text>
-                <TextInput style={styles.InputNome}></TextInput>
-                <Text style={styles.numero}>Número de contato:</Text>
-                <TextInput style={styles.InputContato}></TextInput>
-                <Text style={styles.familia}>Possui familia?</Text>
-                <Text style={styles.Qtd}>Quantidade de{'\n'} integrantes:</Text>
-                <TextInput style={styles.InputQtd}></TextInput>
-                <Text style={styles.ajuda}>Forma de ajuda:</Text>
+                <Text style={styles.text}>Entre em contato com a pessoa pelo número fornecido! {'\n'}</Text>
+                <Text style={styles.label}>Nome:</Text>
+                <Text style={styles.value}>{route.params.nome}</Text>
+                <Text style={styles.label}>Número de contato:</Text>
+                <Text style={styles.value}>{route.params.contato}</Text>
+                <Text style={styles.label}>Possui familia?</Text>
+                <Text style={styles.label}>Quantidade de{'\n'} integrantes:</Text>
+                <Text style={styles.value}>{route.params.qtdIntegrantes}</Text>
+                <Text style={styles.label}>Forma de ajuda:</Text>
                 <TouchableOpacity style={styles.botaoAjuda}
-                        onPress={() => { navigation.navigate("TelaOng5"); }}
+                        onPress={() => { navigation.navigate("TelaOng5", route.params); }}
                     >
                         <Text style={styles.textAjuda}>Ajudei!</Text>
                 </TouchableOpacity>
@@ -33,7 +31,6 @@ export function TelaOng4({ navigation }) {
 
 const styles = StyleSheet.create({
 text: {
-    left: 42,
     marginTop: 20,
     fontStyle: 'normal',
     fontWeight: 400,
@@ -41,118 +38,54 @@ text: {
     color: '#000'
 },
 
-nome: {
-    position:'relative',
-    left: 45,
-    marginTop: 25,
+label: {
+    position: 'relative',
+    marginBottom:10,
     fontStyle: 'normal',
     fontWeight: 400,
     fontSize: 32,
     lineHeight: 39,
     color: '#000'
 },
-
-InputNome: {
+value: {
     position:'relative',
-    width: 295,
-    height: 34.86,
-    left: 45,
-    marginTop: 10,
-    backgroundColor: '#FFFFE0',
-    borderRadius: 20,
-},
-
-numero: {
-    position:'relative',
-    left: 45,
-    marginTop: 20,
+    marginBottom:25,
+    width:300,
+    backgroundColor: "white",
     fontStyle: 'normal',
+    borderRadius:25,
     fontWeight: 400,
     fontSize: 32,
     lineHeight: 39,
     color: '#000'
 },
-
-InputContato: {
-    position:'relative',
-    width: 295,
-    height: 38.73,
-    left: 45,
-    marginTop: 12,
-    backgroundColor: '#FFFFE0',
-    borderRadius: 20
-},
-
-familia: {
-    position:'relative',
-    left: 45,
-    marginTop: 25,
-    fontStyle: 'normal',
-    fontWeight: 400,
-    fontSize: 32,
-    lineHeight: 39,
-    color: '#000'
-},
-
-Qtd: {
-    position:'relative',
-    left: 45,
-    marginTop: 60,
-    fontStyle: 'normal',
-    fontWeight: 400,
-    fontSize: 32,
-    lineHeight: 39,
-    color: '#000'
-},
-
-InputQtd: {
-    position:'relative',
-    width: 295,
-    left:45,
-    height: 38.73,
-    marginTop: 12,
-    backgroundColor: '#FFFFE0',
-    borderRadius: 20
-},
-
-ajuda: {
-    position:'relative',
-    left: 45,
-    marginTop: 12,
-    fontStyle: 'normal',
-    fontWeight: 400,
-    fontSize: 32,
-    lineHeight: 39,
-    color: '#000'
-},
-
 botaoAjuda: {
     position: 'relative',
-    width: 295,
+    width: 280,
     height: 77,
-    left: 46,
-    marginTop: 30,
+    marginTop: 40,
+    marginLeft:30,
     backgroundColor: '#FFFFE0',
-    borderRadius: 30
+    borderRadius: 30,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
 },
 
 textAjuda:{
     position: 'relative',
-    width: 235,
     height: 49,
-    left: 70,
-    top: 10,
     fontStyle: 'normal',
     fontWeight: 400,
     fontSize: 40,
     lineHeight: 48
 },
 
-
-
-
-    fundo: {
-        backgroundColor: '#FDE74C',
-        flex: 1
-    }
+fundo: {
+    backgroundColor: '#FDE74C',
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "center",
+    paddingLeft: 40
+}
 });
