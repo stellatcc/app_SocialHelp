@@ -1,13 +1,16 @@
 {
-    "compilerOptions": {
-        "baseUrl": "./",
-        "paths": {
-            "@telasNecessitados": ["src/necessitados/*"],
-            "@telasVoluntarios": ["src/voluntarios/*"],
-            "@telasOngs": ["src/ongs/*"],
-            "@assets": ["assets/*"],
-            "@fonts": ["assets/fonts/*"],
-            "@banco":["BancoDados/*"]
-        }
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@assets": ["assets/*"],
+      "@fonts": ["assets/fonts/*"],
+      "@banco": ["BancoDados/*"],
+      "@cadastro": ["cad/*"],
+      "@login": ["login/*"],
+      "@home": ["home/*"],
+      "@help": ["help/*"],
+      "@profile": ["profile/*"],
+      "@selecionar": ["selecionar/*"]
     }
+  }
 }

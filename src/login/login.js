@@ -4,37 +4,37 @@ import {
   Text,
   TouchableOpacity,
   TextInput,
-} from 'react-native';
-import axios from 'axios';
-import * as SplashScreen from 'expo-splash-screen';
-import { url } from '@banco/url.js';
-import { useState } from 'react';
+} from "react-native";
+import axios from "axios";
+import * as SplashScreen from "expo-splash-screen";
+import { url } from "@banco/url.js";
+import { useState } from "react";
 
 SplashScreen.preventAutoHideAsync();
 
-export function Tela1({ navigation, route }) {
+export function Login({ navigation, route }) {
   const { tipo } = route.params;
-  const [nomeUsuario, setNomeUsuario] = useState('');
-  const [senha, setSenha] = useState('');
+  const [nomeUsuario, setNomeUsuario] = useState("");
+  const [senha, setSenha] = useState("");
 
   const setTela = () => {
-    if (tipo == 'ong') {
-      return 'TelaOng3';
-    } else if (tipo == 'voluntario') {
-      return 'TelaPessoas3';
-    } else if (tipo == 'necessitado') {
-      return 'TelaNecessitados3';
+    if (tipo == "ong") {
+      return { tela: "HomeOngs", telaCadastro: "CadOngs" };
+    } else if (tipo == "voluntario") {
+      return { tela: "HomePessoas", telaCadastro: "CadPessoas" };
+    } else if (tipo == "necessitado") {
+      return { tela: "HomeNecessitados", telaCadastro: "CadNecessitados" };
     }
   };
 
   const verificaDados = async () => {
-    const response = await axios.post(url + '/SocialHelp/login.php', {
+    const response = await axios.post(url + "/SocialHelp/login.php", {
       nomeUsuario,
       senha,
       tipo,
     });
     response.data.success === true
-      ? navigation.navigate(setTela())
+      ? navigation.navigate(setTela().tela, response.data.result)
       : alert(response.data.success);
   };
 
@@ -64,7 +64,7 @@ export function Tela1({ navigation, route }) {
           <Text style={styles.textConta}>Não possui conta?</Text>
           <Text
             onPress={() => {
-              navigation.navigate(setTela());
+              navigation.navigate(setTela().telaCadastro);
             }}
             style={styles.textConta2}
           >
@@ -79,19 +79,19 @@ export function Tela1({ navigation, route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E55934',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#E55934",
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   text: {
-    color: '#FAEDCD',
-    fontStyle: 'normal',
-    fontFamily: 'normal',
+    color: "#FAEDCD",
+    fontStyle: "normal",
+    fontFamily: "normal",
     fontWeight: 400,
     fontSize: 40,
     lineHeight: 48,
-    position: 'absolute',
+    position: "absolute",
     width: 227,
     height: 49,
     left: 27,
@@ -99,108 +99,108 @@ const styles = StyleSheet.create({
   },
 
   boxWhite: {
-    position: 'absolute',
+    position: "absolute",
     width: 415,
     height: 772,
     left: 0,
     top: 100,
-    backgroundColor: '#FAEDCD',
+    backgroundColor: "#FAEDCD",
     borderRadius: 29,
   },
 
   usuario: {
-    position: 'absolute',
+    position: "absolute",
     width: 221,
     height: 36,
     left: 61,
     top: 80,
-    fontFamily: 'normal',
-    fontStyle: 'normal',
+    fontFamily: "normal",
+    fontStyle: "normal",
     fontWeight: 400,
     fontSize: 32,
     lineHeight: 39,
-    color: '#000000',
+    color: "#000000",
   },
 
   InputUsuario: {
-    position: 'absolute',
+    position: "absolute",
     width: 267,
     height: 37,
     left: 61,
     top: 130,
-    backgroundColor: '#E55934',
+    backgroundColor: "#E55934",
     borderRadius: 20,
   },
 
   senha: {
-    position: 'absolute',
+    position: "absolute",
     width: 221,
     height: 36,
     left: 61,
     top: 180,
-    fontFamily: 'normal',
-    fontStyle: 'normal',
+    fontFamily: "normal",
+    fontStyle: "normal",
     fontWeight: 400,
     fontSize: 32,
     lineHeight: 39,
-    color: '#000000',
+    color: "#000000",
   },
 
   InputSenha: {
-    position: 'absolute',
+    position: "absolute",
     width: 267,
     height: 37,
     left: 61,
     top: 220,
-    backgroundColor: '#E55934',
+    backgroundColor: "#E55934",
     borderRadius: 20,
   },
 
   botaoLogin: {
-    position: 'absolute',
+    position: "absolute",
     width: 295,
     height: 77,
     left: 46,
     top: 280,
-    backgroundColor: '#E55934',
+    backgroundColor: "#E55934",
     borderRadius: 20,
   },
 
   textLogin: {
-    position: 'absolute',
-    textAlign: 'center',
+    position: "absolute",
+    textAlign: "center",
     width: 235,
     height: 49,
     left: 25,
     top: 10,
-    fontFamily: 'normal',
-    fontStyle: 'normal',
+    fontFamily: "normal",
+    fontStyle: "normal",
     fontWeight: 400,
     fontSize: 40,
     lineHeight: 50,
-    color: '#FAEDCD',
+    color: "#FAEDCD",
   },
   textConta: {
-    position: 'relative',
+    position: "relative",
     width: 221,
     height: 36,
     left: 61,
     top: 360,
-    fontFamily: 'normal',
-    fontStyle: 'normal',
+    fontFamily: "normal",
+    fontStyle: "normal",
     fontSize: 20,
-    color: '#000000',
+    color: "#000000",
   },
 
   textConta2: {
-    position: 'relative',
+    position: "relative",
     width: 221,
     height: 36,
     left: 61,
     top: 360,
-    fontFamily: 'normal',
-    fontStyle: 'normal',
+    fontFamily: "normal",
+    fontStyle: "normal",
     fontSize: 20,
-    color: '#FA7921',
+    color: "#FA7921",
   },
 });
