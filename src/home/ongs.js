@@ -13,7 +13,7 @@ import { url } from "@banco/url.js";
 export function HomeOngs({ navigation, route }) {
   const [data, setData] = useState([]);
   const mostrarDados = async () => {
-    const response = await axios.get(url + "/SocialHelp/select.php");
+    const response = await axios.get(url + "/SocialHelp/selectOng.php");
     setData(response.data.result);
   };
   mostrarDados();
@@ -46,7 +46,7 @@ export function HomeOngs({ navigation, route }) {
           {data.map(cards)}
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("HelpOngs", route.params);
+              navigation.navigate("HomeOngs", route.params);
             }}
           >
             <Image

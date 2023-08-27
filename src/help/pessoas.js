@@ -6,32 +6,30 @@ import {
   ScrollView,
   SafeAreaView,
 } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as SplashScreen from "expo-splash-screen";
 import { TouchableOpacity } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 
-export function HelpPessoas({ navigation }) {
+export function HelpPessoas({ navigation, route }) {
   return (
     <SafeAreaView style={styles.fundo}>
       <ScrollView>
         <Text style={styles.text}>
           Entre em contato com a pessoa pelo número fornecido!
         </Text>
-        <Text style={styles.nome}>Nome:</Text>
-        <TextInput style={styles.InputNome}></TextInput>
-        <Text style={styles.numero}>Número de contato:</Text>
-        <TextInput style={styles.InputContato}></TextInput>
-        <Text style={styles.familia}>Possui familia?</Text>
-        <Text style={styles.Qtd}>Quantidade de{"\n"} integrantes:</Text>
-        <TextInput style={styles.InputQtd}></TextInput>
-        <Text style={styles.ajuda}>Forma de ajuda:</Text>
+        <Text style={styles.label}>Nome:</Text>
+        <Text style={styles.value}>{route.params.nome}</Text>
+        <Text style={styles.label}>Número de contato:</Text>
+        <Text style={styles.value}>{route.params.contato}</Text>
+        <Text style={styles.label}>Possui familia?</Text>
+        <Text style={styles.label}>Quantidade de{"\n"} integrantes:</Text>
+        <Text style={styles.value}>{route.params.qtdIntegrantes}</Text>
+        <Text style={styles.label}>Forma de ajuda:</Text>
         <TouchableOpacity
           style={styles.botaoAjuda}
           onPress={() => {
-            navigation.navigate("HelpPessoas2");
+            navigation.navigate("HelpPessoas3", route.params);
           }}
         >
           <Text style={styles.textAjuda}>Ajudei!</Text>
@@ -50,91 +48,29 @@ const styles = StyleSheet.create({
     fontSize: 32,
     color: "#000",
   },
-  nome: {
+  label: {
     position: "relative",
-    left: 45,
-    marginTop: 25,
+    marginBottom: 5,
+    marginLeft: 45,
     fontStyle: "normal",
+    fontWeight: 400,
+    fontSize: 32,
+    lineHeight: 60,
+    color: "#000",
+  },
+  value: {
+    position: "relative",
+    marginBottom: 25,
+    marginLeft: 45,
+    width: 300,
+    backgroundColor: "white",
+    fontStyle: "normal",
+    borderRadius: 25,
     fontWeight: 400,
     fontSize: 32,
     lineHeight: 39,
     color: "#000",
   },
-
-  InputNome: {
-    position: "relative",
-    width: 295,
-    height: 34.86,
-    left: 45,
-    marginTop: 10,
-    backgroundColor: "#FFFFE0",
-    borderRadius: 20,
-  },
-
-  numero: {
-    position: "relative",
-    left: 45,
-    marginTop: 20,
-    fontStyle: "normal",
-    fontWeight: 400,
-    fontSize: 32,
-    lineHeight: 39,
-    color: "#000",
-  },
-
-  InputContato: {
-    position: "relative",
-    width: 295,
-    height: 38.73,
-    left: 45,
-    marginTop: 12,
-    backgroundColor: "#FFFFE0",
-    borderRadius: 20,
-  },
-
-  familia: {
-    position: "relative",
-    left: 45,
-    marginTop: 25,
-    fontStyle: "normal",
-    fontWeight: 400,
-    fontSize: 32,
-    lineHeight: 39,
-    color: "#000",
-  },
-
-  Qtd: {
-    position: "relative",
-    left: 45,
-    marginTop: 60,
-    fontStyle: "normal",
-    fontWeight: 400,
-    fontSize: 32,
-    lineHeight: 39,
-    color: "#000",
-  },
-
-  InputQtd: {
-    position: "relative",
-    width: 295,
-    left: 45,
-    height: 38.73,
-    marginTop: 12,
-    backgroundColor: "#FFFFE0",
-    borderRadius: 20,
-  },
-
-  ajuda: {
-    position: "relative",
-    left: 45,
-    marginTop: 12,
-    fontStyle: "normal",
-    fontWeight: 400,
-    fontSize: 32,
-    lineHeight: 39,
-    color: "#000",
-  },
-
   botaoAjuda: {
     position: "relative",
     width: 295,

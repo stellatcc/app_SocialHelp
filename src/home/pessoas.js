@@ -6,9 +6,18 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import { usuarios } from "php/banco";
+import axios from "axios";
+import { useState } from "react";
+import { url } from "@banco/url.js";
 
-export function HomePessoas({ navigation }) {
+export function HomePessoas({ navigation, route }) {
+  const [data, setData] = useState([]);
+  const mostrarDados = async () => {
+    const response = await axios.get(url + "/SocialHelp/selectPessoas.php");
+    setData(response.data.result);
+  };
+  mostrarDados();
+
   function cardsPessoa(value, index, array) {
     let style = styles.cards;
     if (index != 0) {
@@ -19,7 +28,7 @@ export function HomePessoas({ navigation }) {
         key={index}
         style={style}
         onPress={() => {
-          navigation.navigate("HelpPessoas");
+          navigation.navigate("HelpPessoas", value);
         }}
       >
         <Image
@@ -30,6 +39,14 @@ export function HomePessoas({ navigation }) {
       </TouchableOpacity>
     );
   }
+
+  const [data2, setData2] = useState([]);
+  const mostrarDados2 = async () => {
+    const response = await axios.get(url + "/SocialHelp/selectPessoas2.php");
+    setData2(response.data.result);
+  };
+  mostrarDados2();
+
   function cardsOng(value, index, array) {
     let style = styles.cards;
     if (index != 0) {
@@ -40,7 +57,7 @@ export function HomePessoas({ navigation }) {
         key={index}
         style={style}
         onPress={() => {
-          navigation.navigate("HelpPessoas2");
+          navigation.navigate("HelpPessoas2", value);
         }}
       >
         <Image
@@ -60,13 +77,13 @@ export function HomePessoas({ navigation }) {
 
         <ScrollView contentContainerStyle={styles.boxWhite}>
           <Text style={styles.text1}>Necessitado</Text>
-          {usuarios.map(cardsPessoa)}
+          {data.map(cardsPessoa)}
           <Text style={styles.text2}>Ong's</Text>
-          {usuarios.map(cardsOng)}
+          {data2.map(cardsOng)}
 
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("HomePessoas");
+              navigation.navigate("HomePessoas", route.params);
             }}
           >
             <Image
@@ -76,7 +93,7 @@ export function HomePessoas({ navigation }) {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("ProfilePessoas");
+              navigation.navigate("ProfilePessoas", route.params);
             }}
           >
             <Image
@@ -139,7 +156,7 @@ const styles = StyleSheet.create({
     width: 136,
     height: 78,
     left: 120,
-    top: 40,
+    bottom: 15,
     fontStyle: "normal",
     fontWeight: 400,
     fontSize: 32,

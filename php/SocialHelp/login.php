@@ -20,7 +20,7 @@
         echo $result;
     } 
     else { 
-        $result = json_encode(array('success' => true)); 
+        $result = json_encode(array('success' => true, 'result' => $dados_buscar)); 
         echo $result;
     }
 ?>

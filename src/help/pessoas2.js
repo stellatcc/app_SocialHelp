@@ -11,23 +11,23 @@ import { TouchableOpacity } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 
-export function HelpPessoas2({ navigation }) {
+export function HelpPessoas2({ navigation, route }) {
   return (
     <SafeAreaView style={styles.fundo}>
       <ScrollView>
         <Text style={styles.text}>
           Entre em contato pelo número ou E-mail {"\n"}fornecido!
         </Text>
-        <Text style={styles.nomeOng}>Nome da ONG:</Text>
-        <TextInput style={styles.InputNome}></TextInput>
-        <Text style={styles.numero}>Número de contato:</Text>
-        <TextInput style={styles.InputContato}></TextInput>
-        <Text style={styles.email}>E-mail:</Text>
-        <TextInput style={styles.InputEmail}></TextInput>
+        <Text style={styles.label}>Nome da ONG:</Text>
+        <Text style={styles.value}>{route.params.nomeOng}</Text>
+        <Text style={styles.label}>Número de contato:</Text>
+        <Text style={styles.value}>{route.params.contato}</Text>
+        <Text style={styles.label}>E-mail:</Text>
+        <Text style={styles.value}>{route.params.email}</Text>
         <TouchableOpacity
           style={styles.botaoAjuda}
           onPress={() => {
-            navigation.navigate("HelpPessoas3");
+            navigation.navigate("HelpPessoas3", route.params);
           }}
         >
           <Text style={styles.textAjuda}>Ajudei!</Text>
@@ -46,69 +46,29 @@ const styles = StyleSheet.create({
     fontSize: 32,
     color: "#000",
   },
-  nomeOng: {
+  label: {
     position: "relative",
-    left: 45,
-    marginTop: 25,
+    marginBottom: 20,
+    marginLeft: 40,
     fontStyle: "normal",
+    fontWeight: 400,
+    fontSize: 32,
+    lineHeight: 40,
+    color: "#000",
+  },
+  value: {
+    position: "relative",
+    marginLeft: 40,
+    marginBottom: 25,
+    width: 300,
+    backgroundColor: "white",
+    fontStyle: "normal",
+    borderRadius: 25,
     fontWeight: 400,
     fontSize: 32,
     lineHeight: 39,
     color: "#000",
   },
-
-  InputNome: {
-    position: "relative",
-    width: 295,
-    height: 34.86,
-    left: 45,
-    marginTop: 10,
-    backgroundColor: "#FFFFE0",
-    borderRadius: 20,
-  },
-
-  numero: {
-    position: "relative",
-    left: 45,
-    marginTop: 20,
-    fontStyle: "normal",
-    fontWeight: 400,
-    fontSize: 32,
-    lineHeight: 39,
-    color: "#000",
-  },
-
-  InputContato: {
-    position: "relative",
-    width: 295,
-    height: 38.73,
-    left: 45,
-    marginTop: 12,
-    backgroundColor: "#FFFFE0",
-    borderRadius: 20,
-  },
-
-  email: {
-    position: "relative",
-    left: 45,
-    marginTop: 20,
-    fontStyle: "normal",
-    fontWeight: 400,
-    fontSize: 32,
-    lineHeight: 39,
-    color: "#000",
-  },
-
-  InputEmail: {
-    position: "relative",
-    width: 295,
-    left: 45,
-    height: 38.73,
-    marginTop: 12,
-    backgroundColor: "#FFFFE0",
-    borderRadius: 20,
-  },
-
   ajuda: {
     position: "relative",
     left: 45,
