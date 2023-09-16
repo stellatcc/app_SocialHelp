@@ -7,18 +7,19 @@ import {
   TextInput,
 } from "react-native";
 
-export function ProfilePessoas({ navigation }) {
+export function ProfilePessoas({ navigation, route }) {
+  const { nome, email, contato } = route.params[0];
   return (
     <>
       <View style={styles.conteiner}>
         <Text style={styles.text}>Seu perfil:</Text>
-        <Text style={styles.nomeOng}>Nome da ONG:</Text>
-        <TextInput style={styles.InputNome}></TextInput>
-        <Text style={styles.email}>Email:</Text>
-        <TextInput style={styles.InputEmail}></TextInput>
-        <Text style={styles.numero}>Número de contato:</Text>
-        <TextInput style={styles.InputNum}></TextInput>
-        <Text style={styles.ajuda}>Forma de ajuda:</Text>
+        <Text style={styles.label}>Nome:</Text>
+        <Text style={styles.value}>{nome}</Text>
+        <Text style={styles.label}>Email:</Text>
+        <Text style={styles.value}>{email}</Text>
+        <Text style={styles.label}>Número de contato:</Text>
+        <Text style={styles.value}>{contato}</Text>
+        <Text style={styles.label}>Forma de ajuda:</Text>
 
         <TouchableOpacity
           onPress={() => {
@@ -32,7 +33,7 @@ export function ProfilePessoas({ navigation }) {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("TelaPessoas7");
+            navigation.navigate("ProfilePessoas");
           }}
         >
           <Image
@@ -49,73 +50,38 @@ const styles = StyleSheet.create({
   conteiner: {
     flex: 1,
     backgroundColor: "#FAEDCD",
-    alignItems: "center",
+    paddingLeft: 50,
     justifyContent: "center",
   },
 
   text: {
     position: "absolute",
     left: 19,
-    top: 20,
+    top: 5,
     fontStyle: "normal",
     fontSize: 40,
   },
 
-  nomeOng: {
-    position: "absolute",
-    left: 20,
-    top: 90,
-    fontFamily: "normal",
+  label: {
+    position: "relative",
+    marginBottom: 10,
     fontStyle: "normal",
+    fontWeight: 400,
     fontSize: 32,
-    color: "#000000",
-  },
-
-  InputNome: {
-    position: "absolute",
-    width: 295,
-    height: 37,
-    left: 20,
-    top: 150,
-    backgroundColor: "#9BC53D",
-    borderRadius: 20,
-  },
-
-  email: {
-    position: "absolute",
-    left: 20,
-    top: 200,
-    fontStyle: "normal",
-    fontSize: 32,
+    lineHeight: 39,
     color: "#000",
   },
-
-  InputEmail: {
-    position: "absolute",
-    width: 295,
-    height: 37,
-    left: 20,
-    top: 250,
+  value: {
+    position: "relative",
+    marginBottom: 25,
+    width: 300,
     backgroundColor: "#9BC53D",
-    borderRadius: 20,
-  },
-
-  numero: {
-    position: "absolute",
-    left: 20,
-    top: 300,
     fontStyle: "normal",
+    borderRadius: 25,
+    fontWeight: 400,
     fontSize: 32,
+    lineHeight: 39,
     color: "#000",
-  },
-  InputNum: {
-    position: "absolute",
-    width: 295,
-    height: 37,
-    left: 20,
-    top: 350,
-    backgroundColor: "#9BC53D",
-    borderRadius: 20,
   },
   ajuda: {
     position: "absolute",

@@ -8,8 +8,14 @@ import {
   ScrollView,
 } from "react-native";
 import { useState } from "react";
+import { RadioButton } from "react-native-paper";
 
 export function CadPessoas({ navigation }) {
+  const [checked, setChecked] = useState("first");
+  async function bla() {
+    setChecked("");
+    const res = await axios.post(url);
+  }
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [contato, setContato] = useState("");
@@ -35,34 +41,27 @@ export function CadPessoas({ navigation }) {
             style={styles.InputContato}
           ></TextInput>
           <Text style={styles.ajuda}>Forma de Ajuda:</Text>
-          <View
-            style={{
-              position: "absolute",
-              left: 20,
-              bottom: 210,
-              flexDirection: "row",
-              width: 500,
-              height: 100,
-            }}
-          >
-            <View style={{ flexDirection: "row" }}>
-              <TouchableOpacity
-                style={styles.branco}
-                onPress={() => {
-                  trocaEstilo();
-                }}
-              ></TouchableOpacity>
-              <Image></Image>
-            </View>
-            <View style={{ flexDirection: "row", left: 100 }}>
-              <TouchableOpacity
-                style={styles.branco}
-                onPress={() => {
-                  trocaEstilo();
-                }}
-              ></TouchableOpacity>
-              <Image></Image>
-            </View>
+          <View style={{ flexDirection: "row", marginTop: 400, left: 20 }}>
+            <RadioButton
+              style={styles.radio}
+              value='first'
+              status={checked === "first" ? "checked" : "unchecked"}
+              onPress={() => setChecked("first")}
+            />
+            <Image
+              style={{ width: 50, height: 50 }}
+              source={require("@assets/img16.png")}
+            />
+            <RadioButton
+              style={styles.radio}
+              value='second'
+              status={checked === "second" ? "checked" : "unchecked"}
+              onPress={() => setChecked("second")}
+            />
+            <Image
+              style={{ width: 50, height: 50 }}
+              source={require("@assets/img17.png")}
+            />
           </View>
           <TouchableOpacity
             style={styles.proximo}

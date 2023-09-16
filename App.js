@@ -78,7 +78,7 @@ export default function App({ navigation }) {
         <Stack.Screen name='HomeNecessitados' component={HomeNecessitados} />
         {/*Profile */}
         <Stack.Screen
-          name='ProfileNecessitadosf'
+          name='ProfileNecessitados'
           component={ProfileNecessitados}
         />
         <Stack.Screen name='ProfileOngs' component={ProfileOngs} />

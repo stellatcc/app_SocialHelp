@@ -9,8 +9,15 @@ import {
   SafeAreaView,
 } from "react-native";
 import { useState } from "react";
+import { RadioButton } from "react-native-paper";
 
 export function CadNecessitados({ navigation }) {
+  const [checked, setChecked] = useState("first");
+  const [check, setCheck] = useState("fourth");
+  async function bla() {
+    setChecked("");
+    const res = await axios.post(url);
+  }
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [qtdIntegrantes, setQtdIntegrantes] = useState("");
@@ -38,40 +45,54 @@ export function CadNecessitados({ navigation }) {
               style={styles.InputContato}
             ></TextInput>
             <Text style={styles.ajuda}>Possui familia?</Text>
-            <View
-              style={{
-                position: "absolute",
-                left: 20,
-                bottom: 210,
-                flexDirection: "row",
-                width: 500,
-                height: 100,
-              }}
-            >
-              <View style={{ flexDirection: "row" }}>
-                <TouchableOpacity
-                  style={styles.branco}
-                  onPress={() => {
-                    trocaEstilo();
-                  }}
-                ></TouchableOpacity>
-                <Image></Image>
-              </View>
-              <View style={{ flexDirection: "row", left: 100 }}>
-                <TouchableOpacity
-                  style={styles.branco}
-                  onPress={() => {
-                    trocaEstilo();
-                  }}
-                ></TouchableOpacity>
-                <Image></Image>
-              </View>
+            <View style={{ flexDirection: "row", marginTop: 400 }}>
+              <RadioButton
+                style={styles.radio}
+                value='first'
+                status={checked === "first" ? "checked" : "unchecked"}
+                onPress={() => setChecked("first")}
+              />
+              <Text style={styles.label}>Sim</Text>
             </View>
-            <Text style={styles.qtd}>Se sim, quantos integrantes?</Text>
+            <View style={{ flexDirection: "row", marginTop: 10 }}>
+              <RadioButton
+                style={styles.radio}
+                value='second'
+                status={checked === "second" ? "checked" : "unchecked"}
+                onPress={() => setChecked("second")}
+              />
+              <Text style={styles.label}>Não</Text>
+            </View>
+            <Text style={styles.qtd}>Se sim, quantos inte-{"\n"}grantes?</Text>
+
             <TextInput
               onChangeText={(text) => setQtdIntegrantes(text)}
               style={styles.InputQtd}
             ></TextInput>
+            <Text style={styles.precisa}>Do que você precisa?</Text>
+            <View style={{ flexDirection: "row", marginTop: 220 }}>
+              <RadioButton
+                style={styles.radio}
+                value='third'
+                status={check === "third" ? "checked" : "unchecked"}
+                onPress={() => setCheck("third")}
+              />
+              <Image
+                style={{ width: 50, height: 50 }}
+                source={require("@assets/img16.png")}
+              />
+              <RadioButton
+                style={styles.radio}
+                value='fourth'
+                status={check === "fourth" ? "checked" : "unchecked"}
+                onPress={() => setCheck("fourth")}
+              />
+              <Image
+                style={{ width: 50, height: 50 }}
+                source={require("@assets/img17.png")}
+              />
+            </View>
+
             <TouchableOpacity
               style={styles.proximo}
               onPress={() => {
@@ -101,6 +122,19 @@ const styles = StyleSheet.create({
     backgroundColor: "#5BC0EB",
     alignItems: "center",
     justifyContent: "center",
+  },
+  label: {
+    position: "relative",
+    marginBottom: 10,
+    left: 30,
+    fontStyle: "normal",
+    fontWeight: 400,
+    fontSize: 32,
+    lineHeight: 39,
+    color: "#000",
+  },
+  radio: {
+    width: 30,
   },
   text: {
     position: "absolute",
@@ -186,14 +220,11 @@ const styles = StyleSheet.create({
 
   qtd: {
     position: "absolute",
-    width: 295,
-    height: 36,
     left: 46,
-    marginTop: 530,
+    marginTop: 520,
     fontStyle: "normal",
-    fontWeight: 400,
     fontSize: 32,
-    lineHeight: 39,
+    lineHeight: 32,
     color: "#000",
   },
   InputQtd: {
@@ -217,11 +248,21 @@ const styles = StyleSheet.create({
     lineHeight: 39,
     color: "#000",
   },
+  precisa: {
+    position: "absolute",
+    left: 46,
+    top: 650,
+    fontStyle: "normal",
+    fontWeight: 400,
+    fontSize: 32,
+    lineHeight: 39,
+    color: "#000",
+  },
   proximo: {
     position: "absolute",
     width: 295,
     height: 77,
     left: 46,
-    marginTop: 780,
+    marginTop: 800,
   },
 });

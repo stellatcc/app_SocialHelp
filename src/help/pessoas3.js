@@ -12,7 +12,8 @@ export function HelpPessoas3({ navigation, route }) {
     <>
       <View style={styles.conteiner}>
         <Text style={styles.text}>
-          Obrigada! Você {"\n"}ajudou ({""}){Help()}
+          Obrigada! Você {"\n"}ajudou {""}
+          {Help()}
         </Text>
         <Image
           style={{ width: 250, height: 250, top: 30 }}

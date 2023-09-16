@@ -2,16 +2,21 @@ import {
   StyleSheet,
   Text,
   View,
-  TextInput,
+  Image,
   ScrollView,
   SafeAreaView,
 } from "react-native";
-import * as SplashScreen from "expo-splash-screen";
+import { useState } from "react";
 import { TouchableOpacity } from "react-native";
-
-SplashScreen.preventAutoHideAsync();
+import { RadioButton } from "react-native-paper";
 
 export function HelpPessoas({ navigation, route }) {
+  const [checked, setChecked] = useState("first");
+  const [third, setThird] = useState("third");
+  async function bla() {
+    setChecked("");
+    const res = await axios.post(url);
+  }
   return (
     <SafeAreaView style={styles.fundo}>
       <ScrollView>
@@ -23,9 +28,41 @@ export function HelpPessoas({ navigation, route }) {
         <Text style={styles.label}>Número de contato:</Text>
         <Text style={styles.value}>{route.params.contato}</Text>
         <Text style={styles.label}>Possui familia?</Text>
+        <View style={{ flexDirection: "row" }}>
+          <RadioButton
+            style={styles.radio}
+            value='third'
+            status={third === "third" ? "checked" : "unchecked"}
+            onPress={() => setThird("third")}
+          />
+          <Text style={styles.sim}>Sim</Text>
+        </View>
         <Text style={styles.label}>Quantidade de{"\n"} integrantes:</Text>
         <Text style={styles.value}>{route.params.qtdIntegrantes}</Text>
         <Text style={styles.label}>Forma de ajuda:</Text>
+        <View style={{ flexDirection: "row" }}>
+          <RadioButton
+            style={styles.radio}
+            value='first'
+            status={checked === "first" ? "checked" : "unchecked"}
+            onPress={() => setChecked("first")}
+          />
+          <Image
+            style={{ width: 50, height: 50 }}
+            source={require("@assets/img16.png")}
+          />
+          <RadioButton
+            style={styles.radio}
+            value='second'
+            status={checked === "second" ? "checked" : "unchecked"}
+            onPress={() => setChecked("second")}
+          />
+          <Image
+            style={{ width: 50, height: 50 }}
+            source={require("@assets/img17.png")}
+          />
+        </View>
+
         <TouchableOpacity
           style={styles.botaoAjuda}
           onPress={() => {
@@ -46,6 +83,19 @@ const styles = StyleSheet.create({
     fontStyle: "normal",
     fontWeight: 400,
     fontSize: 32,
+    color: "#000",
+  },
+  radio: {
+    width: 30,
+  },
+  sim: {
+    position: "relative",
+    marginBottom: 10,
+    left: 30,
+    fontStyle: "normal",
+    fontWeight: 400,
+    fontSize: 32,
+    lineHeight: 39,
     color: "#000",
   },
   label: {
