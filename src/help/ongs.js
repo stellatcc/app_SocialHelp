@@ -8,17 +8,33 @@ import {
   Image,
 } from "react-native";
 import { useState } from "react";
-import { RadioButton } from "react-native-paper";
+import { RadioButton, Checkbox } from "react-native-paper";
 import axios from "axios";
 import { url } from "@banco/url.js";
 
 export function HelpOngs({ navigation, route }) {
   const [checked, setChecked] = useState("first");
-  const [third, setThird] = useState("third");
-  async function bla() {
-    setChecked("");
-    const res = await axios.post(url);
+  const [isChecked, setIschecked] = useState();
+
+  async function enviarBanco() {
+    let familia;
+    if (isChecked === "checked") {
+      familia = true;
+    } else {
+      familia = false;
+    }
+    const response = await axios.post(url + "/SocialHelp/selectOng.php", {
+      familia,
+      formaAjuda,
+    });
   }
+
+  function toogleCheck() {
+    isChecked === "unchecked"
+      ? setIschecked("checked")
+      : setIschecked("unchecked");
+  }
+
   return (
     <SafeAreaView style={styles.fundo}>
       <ScrollView>
@@ -31,12 +47,7 @@ export function HelpOngs({ navigation, route }) {
         <Text style={styles.value}>{route.params.contato}</Text>
         <Text style={styles.label}>Possui familia?</Text>
         <View style={{ flexDirection: "row" }}>
-          <RadioButton
-            style={styles.radio}
-            value='third'
-            status={third === "third" ? "checked" : "unchecked"}
-            onPress={() => setThird("third")}
-          />
+          <Checkbox.Item status={isChecked} onPress={() => toogleCheck()} />
           <Text style={styles.sim}>Sim</Text>
         </View>
         <Text style={styles.label}>Quantidade de inte-{"\n"}grantes:</Text>
@@ -45,9 +56,9 @@ export function HelpOngs({ navigation, route }) {
         <View style={{ flexDirection: "row" }}>
           <RadioButton
             style={styles.radio}
-            value='first'
-            status={checked === "first" ? "checked" : "unchecked"}
-            onPress={() => setChecked("first")}
+            value='comida'
+            status={checked === "comida" ? "checked" : "unchecked"}
+            onPress={() => setChecked("comida")}
           />
           <Image
             style={{ width: 50, height: 50 }}
@@ -55,9 +66,9 @@ export function HelpOngs({ navigation, route }) {
           />
           <RadioButton
             style={styles.radio}
-            value='second'
-            status={checked === "second" ? "checked" : "unchecked"}
-            onPress={() => setChecked("second")}
+            value='casa'
+            status={checked === "casa" ? "checked" : "unchecked"}
+            onPress={() => setChecked("casa")}
           />
           <Image
             style={{ width: 50, height: 50 }}
@@ -67,6 +78,7 @@ export function HelpOngs({ navigation, route }) {
         <TouchableOpacity
           style={styles.botaoAjuda}
           onPress={() => {
+            enviarBanco();
             navigation.navigate("HelpOngs2", route.params);
           }}
         >
@@ -90,8 +102,8 @@ const styles = StyleSheet.create({
   },
   sim: {
     position: "relative",
-    marginBottom: 10,
-    left: 30,
+    marginTop: 5,
+    right: 10,
     fontStyle: "normal",
     fontWeight: 400,
     fontSize: 32,

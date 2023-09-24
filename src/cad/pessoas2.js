@@ -3,7 +3,6 @@ import {
   Text,
   View,
   TextInput,
-  Image,
   TouchableOpacity,
   ScrollView,
 } from "react-native";
@@ -12,19 +11,16 @@ import { url } from "@banco/url.js";
 import { useState } from "react";
 
 export function CadPessoas2({ route, navigation }) {
-  const [nomeUsuario, setNomeUsuario] = useState("");
-  const [senha, setSenha] = useState("");
-
-  const { nome, email, contato } = route.params;
+  const [nomeUsuario, setNomeUsuario] = useState();
+  const [senha, setSenha] = useState();
 
   const cadastrarPessoas = async () => {
     const response = await axios.post(url + "/SocialHelp/cadastroPessoas.php", {
-      nome,
-      email,
-      contato,
+      ...route.params,
       nomeUsuario,
       senha,
     });
+    alert(response.status);
   };
 
   return (

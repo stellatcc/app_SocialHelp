@@ -9,19 +9,36 @@ import {
   SafeAreaView,
 } from "react-native";
 import { useState } from "react";
-import { RadioButton } from "react-native-paper";
+import { url } from "@banco/url.js";
+import axios from "axios";
+import { RadioButton, Checkbox } from "react-native-paper";
 
 export function CadNecessitados({ navigation }) {
-  const [checked, setChecked] = useState("first");
-  const [check, setCheck] = useState("fourth");
-  async function bla() {
-    setChecked("");
-    const res = await axios.post(url);
-  }
+  const [checked, setChecked] = useState("");
+  const [isChecked, setIschecked] = useState();
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [qtdIntegrantes, setQtdIntegrantes] = useState("");
   const [contato, setContato] = useState("");
+
+  async function enviarBanco() {
+    let familia;
+    if (isChecked === "checked") {
+      familia = true;
+    } else {
+      familia = false;
+    }
+    const response = await axios.post(url + "/SocialHelp/selectOng.php", {
+      familia,
+      formaAjuda,
+    });
+  }
+
+  function toogleCheck() {
+    isChecked === "unchecked"
+      ? setIschecked("checked")
+      : setIschecked("unchecked");
+  }
 
   return (
     <>
@@ -46,36 +63,21 @@ export function CadNecessitados({ navigation }) {
             ></TextInput>
             <Text style={styles.ajuda}>Possui familia?</Text>
             <View style={{ flexDirection: "row", marginTop: 400 }}>
-              <RadioButton
-                style={styles.radio}
-                value='first'
-                status={checked === "first" ? "checked" : "unchecked"}
-                onPress={() => setChecked("first")}
-              />
-              <Text style={styles.label}>Sim</Text>
-            </View>
-            <View style={{ flexDirection: "row", marginTop: 10 }}>
-              <RadioButton
-                style={styles.radio}
-                value='second'
-                status={checked === "second" ? "checked" : "unchecked"}
-                onPress={() => setChecked("second")}
-              />
-              <Text style={styles.label}>Não</Text>
+              <Checkbox.Item status={isChecked} onPress={() => toogleCheck()} />
+              <Text style={styles.sim}>Sim</Text>
             </View>
             <Text style={styles.qtd}>Se sim, quantos inte-{"\n"}grantes?</Text>
-
             <TextInput
               onChangeText={(text) => setQtdIntegrantes(text)}
               style={styles.InputQtd}
             ></TextInput>
             <Text style={styles.precisa}>Do que você precisa?</Text>
-            <View style={{ flexDirection: "row", marginTop: 220 }}>
+            <View style={{ flexDirection: "row", marginTop: 240 }}>
               <RadioButton
                 style={styles.radio}
-                value='third'
-                status={check === "third" ? "checked" : "unchecked"}
-                onPress={() => setCheck("third")}
+                value='comida'
+                status={checked === "comida" ? "checked" : "unchecked"}
+                onPress={() => setChecked("comida")}
               />
               <Image
                 style={{ width: 50, height: 50 }}
@@ -83,9 +85,9 @@ export function CadNecessitados({ navigation }) {
               />
               <RadioButton
                 style={styles.radio}
-                value='fourth'
-                status={check === "fourth" ? "checked" : "unchecked"}
-                onPress={() => setCheck("fourth")}
+                value='casa'
+                status={checked === "casa" ? "checked" : "unchecked"}
+                onPress={() => setChecked("casa")}
               />
               <Image
                 style={{ width: 50, height: 50 }}
@@ -96,11 +98,14 @@ export function CadNecessitados({ navigation }) {
             <TouchableOpacity
               style={styles.proximo}
               onPress={() => {
+                enviarBanco();
                 navigation.navigate("CadNecessitados2", {
                   nome,
                   email,
                   qtdIntegrantes,
                   contato,
+                  formaAjuda: checked,
+                  familia: isChecked,
                 });
               }}
             >
@@ -126,7 +131,7 @@ const styles = StyleSheet.create({
   label: {
     position: "relative",
     marginBottom: 10,
-    left: 30,
+    left: 5,
     fontStyle: "normal",
     fontWeight: 400,
     fontSize: 32,
@@ -135,6 +140,16 @@ const styles = StyleSheet.create({
   },
   radio: {
     width: 30,
+  },
+  sim: {
+    position: "relative",
+    marginBottom: 10,
+    left: 30,
+    fontStyle: "normal",
+    fontWeight: 400,
+    fontSize: 32,
+    lineHeight: 39,
+    color: "#000",
   },
   text: {
     position: "absolute",

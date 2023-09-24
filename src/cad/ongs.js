@@ -11,11 +11,7 @@ import { useState } from "react";
 import { RadioButton } from "react-native-paper";
 
 export function CadOngs({ navigation }) {
-  const [checked, setChecked] = useState("first");
-  async function bla() {
-    setChecked("");
-    const res = await axios.post(url);
-  }
+  const [checked, setChecked] = useState("");
   const [nome, setNome] = useState("");
   const [nomeOng, setNomeOng] = useState("");
   const [email, setEmail] = useState("");
@@ -49,9 +45,9 @@ export function CadOngs({ navigation }) {
           <View style={{ flexDirection: "row", marginTop: 450, left: 20 }}>
             <RadioButton
               style={styles.radio}
-              value='first'
-              status={checked === "first" ? "checked" : "unchecked"}
-              onPress={() => setChecked("first")}
+              value='comida'
+              status={checked === "comida" ? "checked" : "unchecked"}
+              onPress={() => setChecked("comida")}
             />
             <Image
               style={{ width: 50, height: 50 }}
@@ -59,9 +55,9 @@ export function CadOngs({ navigation }) {
             />
             <RadioButton
               style={styles.radio}
-              value='second'
-              status={checked === "second" ? "checked" : "unchecked"}
-              onPress={() => setChecked("second")}
+              value='casa'
+              status={checked === "casa" ? "checked" : "unchecked"}
+              onPress={() => setChecked("casa")}
             />
             <Image
               style={{ width: 50, height: 50 }}
@@ -77,6 +73,7 @@ export function CadOngs({ navigation }) {
                 nomeOng,
                 email,
                 contato,
+                formaAjuda: checked,
               });
             }}
           >

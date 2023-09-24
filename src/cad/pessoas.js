@@ -11,11 +11,7 @@ import { useState } from "react";
 import { RadioButton } from "react-native-paper";
 
 export function CadPessoas({ navigation }) {
-  const [checked, setChecked] = useState("first");
-  async function bla() {
-    setChecked("");
-    const res = await axios.post(url);
-  }
+  const [checked, setChecked] = useState("");
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [contato, setContato] = useState("");
@@ -44,9 +40,9 @@ export function CadPessoas({ navigation }) {
           <View style={{ flexDirection: "row", marginTop: 400, left: 20 }}>
             <RadioButton
               style={styles.radio}
-              value='first'
-              status={checked === "first" ? "checked" : "unchecked"}
-              onPress={() => setChecked("first")}
+              value='comida'
+              status={checked === "comida" ? "checked" : "unchecked"}
+              onPress={() => setChecked("comida")}
             />
             <Image
               style={{ width: 50, height: 50 }}
@@ -54,9 +50,9 @@ export function CadPessoas({ navigation }) {
             />
             <RadioButton
               style={styles.radio}
-              value='second'
-              status={checked === "second" ? "checked" : "unchecked"}
-              onPress={() => setChecked("second")}
+              value='casa'
+              status={checked === "casa" ? "checked" : "unchecked"}
+              onPress={() => setChecked("casa")}
             />
             <Image
               style={{ width: 50, height: 50 }}
@@ -66,7 +62,12 @@ export function CadPessoas({ navigation }) {
           <TouchableOpacity
             style={styles.proximo}
             onPress={() => {
-              navigation.navigate("CadPessoas2", { nome, email, contato });
+              navigation.navigate("CadPessoas2", {
+                nome,
+                email,
+                contato,
+                formaAjuda: checked,
+              });
             }}
           >
             <Image

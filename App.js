@@ -59,7 +59,7 @@ export default function App({ navigation }) {
         <Stack.Screen name='login' component={Login} />
         <Stack.Screen name='selecionar' component={Selecionar} />
         <Stack.Screen name='CadOngs' component={CadOngs} />
-        <Stack.Screen name='CadOng2' component={CadOngs2} />
+        <Stack.Screen name='CadOngs2' component={CadOngs2} />
         <Stack.Screen name='CadNecessitados' component={CadNecessitados} />
         <Stack.Screen name='CadNecessitados2' component={CadNecessitados2} />
         <Stack.Screen name='CadPessoas' component={CadPessoas} />

@@ -3,7 +3,6 @@ import {
   Text,
   View,
   TextInput,
-  Image,
   TouchableOpacity,
   ScrollView,
 } from "react-native";
@@ -15,17 +14,14 @@ import { useState } from "react";
 export function CadOngs2({ route, navigation }) {
   const [nomeUsuario, setNomeUsuario] = useState();
   const [senha, setSenha] = useState();
-  const { nome, nomeOng, email, contato } = route.params;
 
   const cadastrarOngs = async () => {
     const response = await axios.post(url + "/SocialHelp/cadastroOng.php", {
-      nome,
-      nomeOng,
+      ...route.params,
       nomeUsuario,
-      email,
-      contato,
       senha,
     });
+    alert(response.status);
   };
 
   return (
