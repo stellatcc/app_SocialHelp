@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     left: 19,
     top: 20,
     fontStyle: "normal",
-    fontSize: 40,
+    fontSize: 30,
   },
 
   label: {
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     fontStyle: "normal",
     fontWeight: 400,
-    fontSize: 32,
+    fontSize: 25,
     lineHeight: 39,
     color: "#000",
   },
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     fontStyle: "normal",
     borderRadius: 25,
     fontWeight: 400,
-    fontSize: 32,
+    fontSize: 25,
     lineHeight: 39,
     color: "#000",
   },
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     left: 20,
     top: 400,
     fontStyle: "normal",
-    fontSize: 32,
+    fontSize: 25,
     color: "#000",
   },
 });

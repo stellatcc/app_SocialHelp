@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     top: 20,
     fontStyle: "normal",
     fontWeight: 400,
-    fontSize: 40,
+    fontSize: 30,
     lineHeight: 48,
   },
 
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     left: 46,
     top: 100,
     fontStyle: "normal",
-    fontSize: 32,
+    fontSize: 25,
     color: "#000",
   },
   InputNome: {
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     left: 46,
     top: 250,
     fontStyle: "normal",
-    fontSize: 32,
+    fontSize: 25,
     color: "#000",
   },
   InputSenha: {
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     top: 10,
     fontStyle: "normal",
     fontWeight: 400,
-    fontSize: 40,
+    fontSize: 30,
     lineHeight: 48,
   },
 

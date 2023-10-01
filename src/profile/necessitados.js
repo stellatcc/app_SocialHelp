@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     position: "relative",
     fontStyle: "normal",
     right: 25,
-    fontSize: 40,
+    fontSize: 30,
   },
 
   label: {
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     position: "relative",
     fontStyle: "normal",
     fontWeight: "400",
-    fontSize: 32,
+    fontSize: 25,
     lineHeight: 39,
     color: "#000",
   },
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     fontStyle: "normal",
     borderRadius: 25,
     fontWeight: 400,
-    fontSize: 32,
+    fontSize: 25,
     lineHeight: 39,
     color: "#000",
   },
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     left: 20,
     top: 400,
     fontStyle: "normal",
-    fontSize: 32,
+    fontSize: 25,
     color: "#000",
   },
 });

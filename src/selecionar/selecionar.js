@@ -63,7 +63,7 @@ export function Selecionar({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#E55934",
+    backgroundColor: "#FAEDCD",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -72,33 +72,33 @@ const styles = StyleSheet.create({
     position: "relative",
     width: 450,
     height: 850,
-    backgroundColor: "#FA7921",
+    backgroundColor: "#FAEDCD",
   },
 
   textIdentificar: {
     position: "absolute",
     width: 350,
     height: 51,
-    left: 90,
+    left: 120,
     top: 312,
     fontFamily: "normal",
     fontStyle: "normal",
     fontWeight: 400,
-    fontSize: 40,
+    fontSize: 30,
     lineHeight: 48,
-    color: "#FAEDCD",
+    color: "#000000",
   },
 
   textButton1: {
-    color: "#FAEDCD",
+    color: "#000000",
   },
 
   textButton2: {
-    color: "#FAEDCD",
+    color: "#000000",
   },
 
   textButton3: {
-    color: "#FAEDCD",
+    color: "#000000",
     left: 20,
   },
 });

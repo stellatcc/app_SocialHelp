@@ -12,7 +12,7 @@ export function HelpPessoas3({ navigation, route }) {
     <>
       <View style={styles.conteiner}>
         <Text style={styles.text}>
-          Obrigada! Você {"\n"}ajudou {""}
+          Obrigada! Você ajudou {""}
           {Help()}
         </Text>
         <Image
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     left: 19,
     top: 20,
     fontStyle: "normal",
-    fontSize: 40,
+    fontSize: 30,
     lineHeight: 48,
   },
 });

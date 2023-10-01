@@ -16,7 +16,7 @@ export function HelpPessoas2({ navigation, route }) {
     <SafeAreaView style={styles.fundo}>
       <ScrollView>
         <Text style={styles.text}>
-          Entre em contato pelo número ou E-mail {"\n"}fornecido!
+          Entre em contato pelo número ou E-mail fornecido!
         </Text>
         <Text style={styles.label}>Nome da ONG:</Text>
         <Text style={styles.value}>{route.params.nomeOng}</Text>
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     fontStyle: "normal",
     fontWeight: 400,
-    fontSize: 32,
+    fontSize: 25,
     color: "#000",
   },
   label: {
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     marginLeft: 40,
     fontStyle: "normal",
     fontWeight: 400,
-    fontSize: 32,
+    fontSize: 25,
     lineHeight: 40,
     color: "#000",
   },
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     fontStyle: "normal",
     borderRadius: 25,
     fontWeight: 400,
-    fontSize: 32,
+    fontSize: 25,
     lineHeight: 39,
     color: "#000",
   },
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
     fontStyle: "normal",
     fontWeight: 400,
-    fontSize: 32,
+    fontSize: 25,
     lineHeight: 39,
     color: "#000",
   },
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     top: 10,
     fontStyle: "normal",
     fontWeight: 400,
-    fontSize: 40,
+    fontSize: 30,
     lineHeight: 48,
   },
 

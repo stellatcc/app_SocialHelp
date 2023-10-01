@@ -5,7 +5,7 @@ export function HelpOngs2({ navigation, route }) {
     <>
       <View style={styles.conteiner}>
         <Text style={styles.text}>
-          Obrigada! Você {"\n"}ajudou {route.params.nome}
+          Obrigada! Você ajudou {"\n"} {route.params.nome}
         </Text>
         <Image
           style={{ width: 250, height: 250, top: 30 }}
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     left: 19,
     top: 20,
     fontStyle: "normal",
-    fontSize: 40,
+    fontSize: 30,
     lineHeight: 48,
   },
 });
