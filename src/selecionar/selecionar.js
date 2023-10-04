@@ -26,7 +26,7 @@ export function Selecionar({ navigation }) {
               }}
             >
               <Image
-                style={{ width: 75, height: 75, right: 20 }}
+                style={{ width: 68, height: 60, right: 20, top: 10 }}
                 source={require("@assets/img1.png")}
               />
               <Text style={styles.textButton1}>Ong</Text>
@@ -37,7 +37,7 @@ export function Selecionar({ navigation }) {
               }}
             >
               <Image
-                style={{ width: 75, height: 75 }}
+                style={{ width: 55, height: 65 }}
                 source={require("@assets/img2.png")}
               />
               <Text style={styles.textButton2}>Voluntário</Text>
@@ -48,7 +48,7 @@ export function Selecionar({ navigation }) {
               }}
             >
               <Image
-                style={{ width: 75, height: 75, left: 20 }}
+                style={{ width: 80, height: 62, left: 20, top: 10 }}
                 source={require("@assets/img3.png")}
               />
               <Text style={styles.textButton3}>Necessitado</Text>
@@ -86,19 +86,21 @@ const styles = StyleSheet.create({
     fontWeight: 400,
     fontSize: 30,
     lineHeight: 48,
-    color: "#000000",
+    color: "#F48C06",
   },
 
   textButton1: {
-    color: "#000000",
+    color: "#F48C06",
+    marginTop: 5,
   },
 
   textButton2: {
-    color: "#000000",
+    color: "#F48C06",
   },
 
   textButton3: {
-    color: "#000000",
+    color: "#F48C06",
     left: 20,
+    marginTop: 5,
   },
 });

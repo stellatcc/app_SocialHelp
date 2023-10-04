@@ -8,28 +8,55 @@ import {
   ScrollView,
 } from "react-native";
 import { useState } from "react";
-import { RadioButton } from "react-native-paper";
+import { Checkbox } from "react-native-paper";
 
 export function CadOngs({ navigation }) {
-  const [checked, setChecked] = useState("");
+  const [checked, setChecked] = useState(false);
+  const [ischecked, setIsChecked] = useState(false);
   const [nome, setNome] = useState("");
   const [nomeOng, setNomeOng] = useState("");
   const [email, setEmail] = useState("");
   const [contato, setContato] = useState("");
+
+  async function enviarBanco() {
+    let formaAjuda;
+    if (checked === "checked") {
+      formaAjuda = true;
+    } else {
+      formaAjuda = false;
+    }
+    const response = await axios.post(
+      url + "/SocialHelp/selectNecessitados2.php",
+      {
+        formaAjuda,
+      }
+    );
+  }
+
+  function toogleCheck() {
+    checked === "unchecked" ? setChecked("checked") : setChecked("unchecked");
+  }
+
+  function toogleCheck2() {
+    ischecked === "unchecked"
+      ? setIsChecked("checked")
+      : setIsChecked("unchecked");
+  }
+
   return (
     <>
       <View style={styles.conteiner}>
         <Text style={styles.text}>Cadastro Ong's</Text>
         <ScrollView contentContainerStyle={styles.boxWhite}>
-          <Text style={styles.nome}>Nome:</Text>
+          <Text style={styles.nomeOng}>Nome da Ong:</Text>
           <TextInput
             onChangeText={(text) => setNome(text)}
-            style={styles.InputNome}
+            style={styles.InputOng}
           ></TextInput>
-          <Text style={styles.nomeOng}>Nome da ONG:</Text>
+          <Text style={styles.nome}>Representante:</Text>
           <TextInput
             onChangeText={(text) => setNomeOng(text)}
-            style={styles.InputOng}
+            style={styles.InputNome}
           ></TextInput>
           <Text style={styles.email}>E-mail:</Text>
           <TextInput
@@ -42,38 +69,33 @@ export function CadOngs({ navigation }) {
             style={styles.InputContato}
           ></TextInput>
           <Text style={styles.ajuda}>Forma de Ajuda:</Text>
-          <View style={{ flexDirection: "row", marginTop: 450, left: 20 }}>
-            <RadioButton
-              style={styles.radio}
-              value='comida'
-              status={checked === "comida" ? "checked" : "unchecked"}
-              onPress={() => setChecked("comida")}
-            />
+          <View style={{ flexDirection: "row", marginTop: 480 }}>
+            <Checkbox.Item status={checked} onPress={() => toogleCheck()} />
             <Image
-              style={{ width: 50, height: 50 }}
+              style={{ width: 50, height: 50, right: 20, top: 5 }}
               source={require("@assets/img16.png")}
-            />
-            <RadioButton
-              style={styles.radio}
-              value='casa'
-              status={checked === "casa" ? "checked" : "unchecked"}
-              onPress={() => setChecked("casa")}
-            />
-            <Image
-              style={{ width: 50, height: 50 }}
-              source={require("@assets/img17.png")}
-            />
+            ></Image>
+            <Text style={styles.label}>alimentação</Text>
           </View>
-
+          <View style={{ flexDirection: "row", marginTop: 78 }}>
+            <Checkbox.Item status={ischecked} onPress={() => toogleCheck2()} />
+            <Image
+              style={{ width: 50, height: 50, right: 20, top: 2 }}
+              source={require("@assets/img17.png")}
+            ></Image>
+            <Text style={styles.label}>pousadia</Text>
+          </View>
           <TouchableOpacity
             style={styles.proximo}
             onPress={() => {
+              enviarBanco();
               navigation.navigate("CadOngs2", {
                 nome,
                 nomeOng,
                 email,
                 contato,
                 formaAjuda: checked,
+                formaAjuda: ischecked,
               });
             }}
           >
@@ -119,12 +141,32 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFD8",
     borderRadius: 29,
   },
+  nomeOng: {
+    position: "absolute",
+    width: 244.18,
+    height: 33.33,
+    left: 46,
+    top: 50,
+    fontStyle: "normal",
+    fontWeight: 400,
+    fontSize: 25,
+    color: "#000",
+  },
+  InputOng: {
+    position: "absolute",
+    width: 295,
+    height: 37,
+    left: 46,
+    top: 100,
+    backgroundColor: "#FDE74C",
+    borderRadius: 20,
+  },
   nome: {
     position: "absolute",
     width: 221,
     height: 36,
     left: 46,
-    top: 10,
+    top: 145,
     fontStyle: "normal",
     fontWeight: 400,
     fontSize: 25,
@@ -136,28 +178,7 @@ const styles = StyleSheet.create({
     width: 295,
     height: 37,
     left: 46,
-    top: 50,
-    backgroundColor: "#FDE74C",
-    borderRadius: 20,
-  },
-  nomeOng: {
-    position: "absolute",
-    width: 244.18,
-    height: 33.33,
-    left: 46,
-    top: 90,
-    fontStyle: "normal",
-    fontWeight: 400,
-    fontSize: 25,
-    lineHeight: 39,
-    color: "#000",
-  },
-  InputOng: {
-    position: "absolute",
-    width: 295,
-    height: 37,
-    left: 46,
-    top: 140,
+    top: 200,
     backgroundColor: "#FDE74C",
     borderRadius: 20,
   },
@@ -166,7 +187,7 @@ const styles = StyleSheet.create({
     width: 244.18,
     height: 36,
     left: 46,
-    top: 190,
+    top: 240,
     fontStyle: "normal",
     fontWeight: 400,
     fontSize: 25,
@@ -178,7 +199,7 @@ const styles = StyleSheet.create({
     width: 295,
     height: 37,
     left: 46,
-    top: 235,
+    top: 290,
     backgroundColor: "#FDE74C",
     borderRadius: 20,
   },
@@ -187,7 +208,7 @@ const styles = StyleSheet.create({
     width: 295,
     height: 36,
     left: 46,
-    top: 280,
+    top: 340,
     fontStyle: "normal",
     fontWeight: 400,
     fontSize: 25,
@@ -199,7 +220,7 @@ const styles = StyleSheet.create({
     width: 295,
     height: 37,
     left: 46,
-    top: 330,
+    top: 385,
     backgroundColor: "#FDE74C",
     borderRadius: 20,
   },
@@ -208,7 +229,7 @@ const styles = StyleSheet.create({
     width: 295,
     height: 36,
     left: 46,
-    top: 380,
+    top: 430,
     fontStyle: "normal",
     fontWeight: 400,
     fontSize: 25,
@@ -220,6 +241,10 @@ const styles = StyleSheet.create({
     width: 295,
     height: 77,
     left: 46,
-    top: 520,
+    top: 660,
+  },
+  label: {
+    top: 60,
+    right: 70,
   },
 });
