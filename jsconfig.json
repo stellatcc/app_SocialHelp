@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@assets": ["assets/*"],
+      "@fonts": ["assets/fonts/*"],
+      "@banco": ["BancoDados/*"],
+      "@cadastro": ["cad/*"],
+      "@login": ["login/*"],
+      "@home": ["home/*"],
+      "@help": ["help/*"],
+      "@profile": ["profile/*"],
+      "@selecionar": ["selecionar/*"]
+    }
+  }
+}
